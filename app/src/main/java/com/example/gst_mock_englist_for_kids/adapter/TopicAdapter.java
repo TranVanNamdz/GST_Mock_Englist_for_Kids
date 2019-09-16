@@ -7,9 +7,6 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,12 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.entities.Topic;
-import com.example.gst_mock_englist_for_kids.room_database.database.Database;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-
 
 
 public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHolder> {
@@ -55,16 +50,13 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHol
     @Override
     public void onBindViewHolder(@NonNull TopicViewHolder holder, int position) {
         final Topic topic = mList.get(position);
-        holder.imgTopic.setImageBitmap(getBitmapFromAssets(topic.getImgTopic()));
-        holder.tvNameTopic.setText(topic.getNameTopic());
+        holder.imgTopic.setImageBitmap(getBitmapFromAssets(topic.getImg()));
+        holder.tvNameTopic.setText(topic.getName());
     }
 
     @Override
     public int getItemCount() {
-        if (mList != null) {
-            return mList.size();
-        }
-        return 0;
+        return mList.size();
     }
 
     private Bitmap getBitmapFromAssets(String fileName) {
@@ -81,7 +73,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHol
         return BitmapFactory.decodeStream(is);
     }
 
-    @Override
+    /*@Override
     public void onViewAttachedToWindow(@NonNull final TopicViewHolder holder) {
         super.onViewAttachedToWindow(holder);
         holder.itemView.post(new Runnable() {
@@ -89,40 +81,33 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHol
             public void run() {
                 AnimationSet mAnimationSet = new AnimationSet(false);
                 AlphaAnimation mFade = new AlphaAnimation(0.0f, 1.5f);
-                mFade.setDuration(1000);
+                mFade.setDuration(300);
                 TranslateAnimation mTranslateAnimation;
-                if (holder.getAdapterPosition() > mIndex) {
+                if (holder.getAdapterPosition() >= mIndex) {
                     mTranslateAnimation = new TranslateAnimation(0, 0, holder.itemView.getHeight(), 0);
                 } else {
                     mTranslateAnimation = new TranslateAnimation(0, 0, -holder.itemView.getHeight(), 0);
 
                 }
                 mIndex = holder.getAdapterPosition();
-                mTranslateAnimation.setDuration(1000);
+                mTranslateAnimation.setDuration(300);
                 mAnimationSet.addAnimation(mFade);
                 mAnimationSet.addAnimation(mTranslateAnimation);
                 holder.itemView.startAnimation(mAnimationSet);
             }
         });
-    }
-
+    }*/
     class TopicViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView imgTopic;
 
         private TextView tvNameTopic;
 
-
-        Database topicDatabase;
-
-
         TopicViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             imgTopic = itemView.findViewById(R.id.imgTopic);
             tvNameTopic = itemView.findViewById(R.id.tvNameTopic);
-            topicDatabase = Database.getInstance(mContext);
-
         }
 
         @Override

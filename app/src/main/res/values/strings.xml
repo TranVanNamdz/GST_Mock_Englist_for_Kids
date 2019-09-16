@@ -6,4 +6,7 @@
     <string name="text_btn_listen_and_guess">Nghe và đoán</string>
     <string name="text_btn_guess_image">Đoán Hình</string>
     <string name="text_btn_view_video">Xem video và học</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

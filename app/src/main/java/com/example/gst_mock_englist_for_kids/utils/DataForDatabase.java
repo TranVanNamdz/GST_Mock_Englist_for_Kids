@@ -83,10 +83,9 @@ public final class DataForDatabase {
         listDetailTopic.add(new TopicDetails(25, "img_alphabet/y.png", "Y", 1));
         listDetailTopic.add(new TopicDetails(26, "img_alphabet/z.png", "Z", 1));
 
-        /*
-         * add data for Number
-         *
-         **/
+
+        //add data for Number
+
         listDetailTopic.add(new TopicDetails(27, "img_number/start.png", "", 2));
         listDetailTopic.add(new TopicDetails(28, "img_number/one.png", "One", 2));
         listDetailTopic.add(new TopicDetails(29, "img_number/two.png", "Two", 2));
@@ -263,7 +262,6 @@ public final class DataForDatabase {
         listDetailTopic.add(new TopicDetails(172, "img_nation/mexico.png", "Mexico", 11));
         listDetailTopic.add(new TopicDetails(173, "img_nation/thailand.png", "Thailand", 11));
         listDetailTopic.add(new TopicDetails(174, "img_nation/south_africa.png", "South Africa", 11));
-
 
 
         // add data for water

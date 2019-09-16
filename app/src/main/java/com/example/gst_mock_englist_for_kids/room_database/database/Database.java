@@ -12,7 +12,7 @@ import com.example.gst_mock_englist_for_kids.room_database.dao.IDao;
 
 @androidx.room.Database(entities = {Topic.class, TopicDetails.class}, exportSchema = false, version = 2)
 public abstract class Database extends RoomDatabase {
-    private static final String DB_NAME = "topic_db";
+    private static final String DB_NAME = "mydata_db";
     private static Database sInstance;
 
     public static synchronized Database getInstance(Context context) {

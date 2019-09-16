@@ -12,47 +12,41 @@ public class Topic implements Serializable {
 
     @PrimaryKey
     @ColumnInfo(name = "id")
-    private int idTopic;
+    private int id;
 
     @ColumnInfo(name = "name")
-    private String nameTopic;
+    private String name;
 
     @ColumnInfo(name = "image")
-    private String imgTopic;
+    private String img;
 
-    public Topic(int idTopic, String nameTopic, String imgTopic) {
-        this.idTopic = idTopic;
-        this.nameTopic = nameTopic;
-        this.imgTopic = imgTopic;
+    public Topic(int id, String name, String img) {
+        this.id = id;
+        this.name = name;
+        this.img = img;
     }
 
-    @Ignore
-    public Topic(String nameTopic, String imgTopic) {
-        this.nameTopic = nameTopic;
-        this.imgTopic = imgTopic;
+    public int getId() {
+        return id;
     }
 
-    public int getIdTopic() {
-        return idTopic;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setIdTopic(int idTopic) {
-        this.idTopic = idTopic;
+    public String getName() {
+        return name;
     }
 
-    public String getNameTopic() {
-        return nameTopic;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNameTopic(String nameTopic) {
-        this.nameTopic = nameTopic;
+    public String getImg() {
+        return img;
     }
 
-    public String getImgTopic() {
-        return imgTopic;
-    }
-
-    public void setImgTopic(String imgTopic) {
-        this.imgTopic = imgTopic;
+    public void setImg(String img) {
+        this.img = img;
     }
 }

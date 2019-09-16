@@ -15,7 +15,7 @@ import java.util.List;
 
 @Dao
 public interface IDao {
-    @Query("SELECT * FROM Topic")
+    @Query("SELECT * FROM Topic ORDER BY id ASC")
     List<Topic> getTopicList();
 
 
@@ -33,6 +33,12 @@ public interface IDao {
 
     @Query("SELECT * FROM TopicDetails WHERE idTopic=:idTopic")
     List<TopicDetails> getListTopicDetails(final int idTopic);
+
+    /**
+     * getQuestion
+   /*  *//*
+    @Query("SELECT image,a,b,c,d,answer FROM TopicDetails INNER JOIN AnswerImage ON TopicDetails.id = AnswerImage.idTopicDetails")
+    List<QuestionAndAnswerImage> getListImageAnswer();*/
 
     @Update
     void updateTopic(Topic topic);

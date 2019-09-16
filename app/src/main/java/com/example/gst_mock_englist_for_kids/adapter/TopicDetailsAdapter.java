@@ -49,8 +49,8 @@ public class TopicDetailsAdapter extends RecyclerView.Adapter<TopicDetailsAdapte
     @Override
     public void onBindViewHolder(@NonNull TopicDetailsHolder holder, int position) {
         final TopicDetails topicDetails = mListDetails.get(position);
-        holder.imgTopicDetails.setImageBitmap(getBitmapFromAssets(topicDetails.getImgTopicDetails()));
-        holder.tvNameTopicDetails.setText(topicDetails.getNameTopicDetails());
+        holder.imgTopicDetails.setImageBitmap(getBitmapFromAssets(topicDetails.getImg()));
+        holder.tvNameTopicDetails.setText(topicDetails.getName());
     }
 
     @Override

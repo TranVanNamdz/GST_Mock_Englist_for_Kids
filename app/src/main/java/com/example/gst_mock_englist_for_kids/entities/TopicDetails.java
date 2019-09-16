@@ -14,47 +14,47 @@ import static androidx.room.ForeignKey.CASCADE;
                 onDelete = CASCADE))
 public class TopicDetails {
     @PrimaryKey
-    @ColumnInfo(name = "idTopicDetails")
-    private int idTopicDetails;
+    @ColumnInfo(name = "id")
+    private int id;
 
-    @ColumnInfo(name = "imgTopicDetails")
-    private String imgTopicDetails;
+    @ColumnInfo(name = "image")
+    private String img;
 
-    @ColumnInfo(name = "nameTopicDetails")
-    private String nameTopicDetails;
+    @ColumnInfo(name = "name")
+    private String name;
 
-    @ColumnInfo(name = "idTopic")
+    @ColumnInfo(name = "idTopic",index =true)
     private int idTopic;
 
-    public TopicDetails(int idTopicDetails, String imgTopicDetails, String nameTopicDetails, int idTopic) {
-        this.idTopicDetails = idTopicDetails;
-        this.imgTopicDetails = imgTopicDetails;
-        this.nameTopicDetails = nameTopicDetails;
+    public TopicDetails(int id, String img, String name, int idTopic) {
+        this.id = id;
+        this.img = img;
+        this.name = name;
         this.idTopic = idTopic;
     }
 
-    public int getIdTopicDetails() {
-        return idTopicDetails;
+    public int getId() {
+        return id;
     }
 
-    public void setIdTopicDetails(int idTopicDetails) {
-        this.idTopicDetails = idTopicDetails;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getImgTopicDetails() {
-        return imgTopicDetails;
+    public String getImg() {
+        return img;
     }
 
-    public void setImgTopicDetails(String imgTopicDetails) {
-        this.imgTopicDetails = imgTopicDetails;
+    public void setImg(String img) {
+        this.img = img;
     }
 
-    public String getNameTopicDetails() {
-        return nameTopicDetails;
+    public String getName() {
+        return name;
     }
 
-    public void setNameTopicDetails(String nameTopicDetails) {
-        this.nameTopicDetails = nameTopicDetails;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getIdTopic() {

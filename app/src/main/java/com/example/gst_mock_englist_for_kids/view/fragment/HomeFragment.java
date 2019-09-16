@@ -1,15 +1,22 @@
-package com.example.gst_mock_englist_for_kids.view;
+package com.example.gst_mock_englist_for_kids.view.fragment;
 
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.gst_mock_englist_for_kids.R;
 
-public class HomeActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class HomeFragment extends Fragment {
 
     private Button mBtnStart;
 
@@ -24,8 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     private View.OnClickListener mBtnStartOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, TopicActivity.class);
-            startActivity(intent);
+            changeFragment(new TopicFragment());
         }
     };
 
@@ -57,13 +63,31 @@ public class HomeActivity extends AppCompatActivity {
         }
     };
 
+    public HomeFragment() {
+
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity);
-        initViews();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        initViews(view);
         addEvents();
+        return view;
+    }
+
+    private void initViews(View view) {
+        mBtnStart = view.findViewById(R.id.btnStart);
+
+        mBtnViewAndChoose = view.findViewById(R.id.btnViewAndChoose);
+
+        mBtnListenAndGuess = view.findViewById(R.id.btnListenAndGuess);
+
+        mBtnMiniGame = view.findViewById(R.id.btnMiniGame);
+
+        mBtnWatchVideo = view.findViewById(R.id.btnWatchVideo);
     }
 
     private void addEvents() {
@@ -79,15 +103,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void initViews() {
-        mBtnStart = findViewById(R.id.btnStart);
-
-        mBtnViewAndChoose = findViewById(R.id.btnViewAndChoose);
-
-        mBtnListenAndGuess = findViewById(R.id.btnListenAndGuess);
-
-        mBtnMiniGame = findViewById(R.id.btnMiniGame);
-
-        mBtnWatchVideo = findViewById(R.id.btnWatchVideo);
+    private void changeFragment(Fragment fragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.frContent, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
+
 }
