@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GST_Mock_Englist_for_Kids</string>
+
+    <string name="text_btn_start">Bắt đầu</string>
+    <string name="text_btn_look_and_choose">Xem và chọn</string>
+    <string name="text_btn_listen_and_guess">Nghe và đoán</string>
+    <string name="text_btn_guess_image">Đoán Hình</string>
+    <string name="text_btn_view_video">Xem video và học</string>
+</resources>

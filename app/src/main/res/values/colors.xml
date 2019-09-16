@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+
+    <!--start color button-->
+    <color name="color_yellow">#F3DA0A</color>
+    <color name="color_orange">#F3683E</color>
+    <color name="color_white">#F8EBEB</color>
+
+    <!--end color button-->
+
+    <!--color background topic detail-->
+    <color name="color_background_topic_details">#EEFAEFD6</color>
+</resources>
