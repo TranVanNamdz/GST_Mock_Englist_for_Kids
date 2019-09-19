@@ -1,4 +1,4 @@
-package com.example.gst_mock_englist_for_kids.view.fragment;
+package com.example.gst_mock_englist_for_kids.view.dialogfragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.utils.Constants;
@@ -19,16 +22,6 @@ public class ResultLookFragment extends DialogFragment {
     private final View.OnClickListener mBtnTryAgainClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            /*Fragment reloadFragment;
-            if (getFragmentManager() != null) {
-            reloadFragment = getFragmentManager().findFragmentByTag(Constants.BACK_STACK_HOME_FRAGMENT);
-            final FragmentTransaction ft = getFragmentManager().beginTransaction();
-            if (reloadFragment != null) {
-                ft.detach(reloadFragment);
-                ft.attach(reloadFragment);
-                dismiss();
-            }
-        }*/
         }
     };
     private final View.OnClickListener mBtnExitClick = new View.OnClickListener() {

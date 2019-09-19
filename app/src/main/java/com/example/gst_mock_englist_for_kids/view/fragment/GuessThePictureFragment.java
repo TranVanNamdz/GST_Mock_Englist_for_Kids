@@ -36,8 +36,6 @@ public class GuessThePictureFragment extends Fragment {
 
     private Button btnReplay;
 
-    private boolean isChecked = false;
-
     private final View.OnClickListener onClickRandomListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

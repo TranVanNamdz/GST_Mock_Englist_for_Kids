@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.adapter.VideoEnglishAdapter;
 import com.example.gst_mock_englist_for_kids.entities.VideoEnglish;
-import com.example.gst_mock_englist_for_kids.view.LearnForVideoActivity;
+import com.example.gst_mock_englist_for_kids.view.activity.LearnForVideoActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,11 +39,12 @@ public class LearnByVideoFragment extends Fragment {
 
     private String ID_PLAYLIST = "PLQDIMgoD-XFS4JfrC6dQtlyZKJqVLr3pl";
 
-    private String URL_GET_JSON = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId="+ID_PLAYLIST+"&key="+API_KEY+"&maxResults=50";
+    private String URL_GET_JSON = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + ID_PLAYLIST + "&key=" + API_KEY + "&maxResults=50";
 
     private RecyclerView mRvVideo;
 
-    private List<VideoEnglish> mListVideo = new ArrayList<>();;
+    private List<VideoEnglish> mListVideo = new ArrayList<>();
+    ;
 
     private VideoEnglishAdapter mVideoEnglishAdapter;
 
@@ -88,12 +88,12 @@ public class LearnByVideoFragment extends Fragment {
                         mListVideo.add(new VideoEnglish(title, description, idVideo, link, chanal));
                         mVideoEnglishAdapter = new VideoEnglishAdapter(getContext(), mListVideo);
                         mRvVideo.setAdapter(mVideoEnglishAdapter);
-                        mRvVideo.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+                        mRvVideo.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
                         mVideoEnglishAdapter.onItemClickVideoListener(new VideoEnglishAdapter.OnItemVideoClickListener() {
                             @Override
                             public void onItemClick(final View view, int position) {
-                                final ValueAnimator value = ValueAnimator.ofFloat(1.0f, 0.5f);
-                                value.setDuration(600);
+                                final ValueAnimator value = ValueAnimator.ofFloat(1.3f, 1.0f);
+                                value.setDuration(300);
                                 value.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                                     @Override
                                     public void onAnimationUpdate(ValueAnimator animation) {

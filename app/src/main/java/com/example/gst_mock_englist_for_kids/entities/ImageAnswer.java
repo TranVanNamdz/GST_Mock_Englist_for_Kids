@@ -2,38 +2,33 @@ package com.example.gst_mock_englist_for_kids.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Answer")
-public class Answer {
+@Entity(tableName = "ImageAnswer")
+public class ImageAnswer {
 
     @PrimaryKey
-    @ColumnInfo(name = "idA")
+    @ColumnInfo(name = "id")
     private int id;
 
-    @ColumnInfo(name = "aA")
+    @ColumnInfo(name = "image")
+    private String img;
+
+    @ColumnInfo(name = "a")
     private String a;
 
-    @ColumnInfo(name = "bA")
+    @ColumnInfo(name = "b")
     private String b;
 
-    @ColumnInfo(name = "cA")
+    @ColumnInfo(name = "c")
     private String c;
 
-    @ColumnInfo(name = "dA")
+    @ColumnInfo(name = "d")
     private String d;
 
-    @ColumnInfo(name = "answerA")
+    @ColumnInfo(name = "correct")
     private String answer;
-
-    public Answer(int id, String a, String b, String c, String d, String answer) {
-        this.id = id;
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
-        this.answer = answer;
-    }
 
     public int getId() {
         return id;
@@ -41,6 +36,14 @@ public class Answer {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getA() {
@@ -80,6 +83,16 @@ public class Answer {
     }
 
     public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public ImageAnswer(int id, String img, String a, String b, String c, String d, String answer) {
+        this.id = id;
+        this.img = img;
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
         this.answer = answer;
     }
 }

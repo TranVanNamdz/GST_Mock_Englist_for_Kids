@@ -12,4 +12,19 @@
         <item name="android:windowBackground">@drawable/custom_background_splash_screen</item>
     </style>
 
+    <style name="FontButton">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/font_button</item>
+    </style>
+
+    <style name="FontHeaderTitle">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/font_title_header</item>
+    </style>
+
+    <style name="FontBodyTextRegular">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/font_body_text</item>
+    </style>
+
 </resources>

@@ -42,7 +42,6 @@ public class TopicDetailsFragment extends Fragment {
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,17 +58,17 @@ public class TopicDetailsFragment extends Fragment {
         mTextToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
+                mTextToSpeech.setLanguage(Locale.US);
+               /* if (status == TextToSpeech.SUCCESS) {
                     int ttsLang = mTextToSpeech.setLanguage(Locale.US);
                     if (ttsLang == TextToSpeech.LANG_MISSING_DATA || ttsLang == TextToSpeech.LANG_NOT_SUPPORTED) {
                         Log.d(TAG, "The language is not supported");
                     } else {
                         Log.d(TAG, "The language is supported");
-
                     }
                 } else {
                     Toast.makeText(getContext(), "TTS Initialization failed", Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
         });
 
@@ -111,17 +110,22 @@ public class TopicDetailsFragment extends Fragment {
                                 }
                             });
                         } else {
-
                             Log.d(TAG, "No data for this Topic");
                         }
-
                     }
                 });
             }
         });
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mTextToSpeech != null) {
+            mTextToSpeech.shutdown();
+            mTextToSpeech.stop();
+        }
+    }
 }
 
 

@@ -9,4 +9,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_rePlay">RePlay</string>
+    <string name="edittext_check_result">Input Answer</string>
+    <string name="cancel">Cancle</string>
+    <string name="action_check">Check</string>
+    <string name="edit_title">Check Answer</string>
+    <string name="tv_name_video">Video Name</string>
 </resources>

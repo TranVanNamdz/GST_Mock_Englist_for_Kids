@@ -1,6 +1,5 @@
-package com.example.gst_mock_englist_for_kids.view.fragment;
+package com.example.gst_mock_englist_for_kids.view.dialogfragment;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.utils.Constants;
 
+
 public class ResultListenFragment extends DialogFragment {
 
     @SuppressWarnings("FieldCanBeLocal")
@@ -22,17 +22,18 @@ public class ResultListenFragment extends DialogFragment {
     private final View.OnClickListener mBtnTryAgainClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Fragment reloadFragment;
+            Fragment fragment;
             if (getFragmentManager() != null) {
-            reloadFragment = getFragmentManager().findFragmentByTag(Constants.BACK_STACK_HOME_FRAGMENT);
-            final FragmentTransaction ft = getFragmentManager().beginTransaction();
-            if (reloadFragment != null) {
-                ft.detach(reloadFragment);
-                ft.attach(reloadFragment);
-                dismiss();
+                fragment = getFragmentManager().findFragmentByTag(Constants.TAG_FRAGMENT_LISTEN);
+                final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                if (fragment != null) {
+                    ft.detach(fragment);
+                    ft.attach(fragment);
+                    ft.commit();
+                }
             }
+
         }
-    }
     };
     private final View.OnClickListener mBtnExitClick = new View.OnClickListener() {
         @Override
@@ -60,8 +61,5 @@ public class ResultListenFragment extends DialogFragment {
 
         mBtnExit = view.findViewById(R.id.btnExit);
         mBtnExit.setOnClickListener(mBtnExitClick);
-    }
-    interface ResultListener {
-        void refreshFragment();
     }
 }

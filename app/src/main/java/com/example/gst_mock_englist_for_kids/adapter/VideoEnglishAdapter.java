@@ -67,7 +67,6 @@ public class VideoEnglishAdapter extends RecyclerView.Adapter<VideoEnglishAdapte
         @Override
         public void onClick(View v) {
             mListener.onItemClick(v, getAdapterPosition());
-
         }
     }
 

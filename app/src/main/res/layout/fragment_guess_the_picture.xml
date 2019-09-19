@@ -19,10 +19,9 @@
         android:background="@drawable/custom_button_selector"
         android:textAllCaps="false"
         android:id="@+id/btn_rePlay"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
         android:text="@string/btn_rePlay" />
 </RelativeLayout>

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.gst_mock_englist_for_kids.R;
+import com.example.gst_mock_englist_for_kids.utils.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,45 +29,44 @@ public class HomeFragment extends Fragment {
 
     private Button mBtnWatchVideo;
 
-    private View.OnClickListener mBtnStartOnClick = new View.OnClickListener() {
+    private final View.OnClickListener mBtnStartOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            changeFragment(new TopicFragment());
+            changeFragment(new TopicFragment(), null, null);
         }
     };
 
-    private View.OnClickListener mBtnViewAndChooseOnClick = new View.OnClickListener() {
+    private final View.OnClickListener mBtnLockAndChooseOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            changeFragment(new LookAndChooseFragment(), Constants.BACK_STACK_HOME_FRAGMENT, Constants.TAG_FRAGMENT_LOOK);
         }
     };
 
-    private View.OnClickListener mBtnListenAndGuessOnClick = new View.OnClickListener() {
+    private final View.OnClickListener mBtnListenAndGuessOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            changeFragment(new ListenAndGuessFragment(), Constants.BACK_STACK_HOME_FRAGMENT, Constants.TAG_FRAGMENT_LISTEN);
         }
     };
 
-    private View.OnClickListener mBtnMiniGameOnClick = new View.OnClickListener() {
+    private final View.OnClickListener mBtnMiniGameOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            changeFragment(new GuessThePictureFragment(), null, null);
         }
     };
 
-    private View.OnClickListener mBtnWatchVideoOnClick = new View.OnClickListener() {
+    private final View.OnClickListener mBtnWatchVideoOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            changeFragment(new LearnByVideoFragment(), null, null);
         }
     };
 
     public HomeFragment() {
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
     private void addEvents() {
         mBtnStart.setOnClickListener(mBtnStartOnClick);
 
-        mBtnViewAndChoose.setOnClickListener(mBtnViewAndChooseOnClick);
+        mBtnViewAndChoose.setOnClickListener(mBtnLockAndChooseOnClick);
 
         mBtnListenAndGuess.setOnClickListener(mBtnListenAndGuessOnClick);
 
@@ -103,11 +103,11 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void changeFragment(Fragment fragment) {
+    private void changeFragment(Fragment fragment, String backStack, String tag) {
+        assert getFragmentManager() != null;
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.frContent, fragment);
-        transaction.addToBackStack(null);
+        transaction.replace(R.id.frContent, fragment, tag);
+        transaction.addToBackStack(backStack);
         transaction.commit();
     }
-
 }

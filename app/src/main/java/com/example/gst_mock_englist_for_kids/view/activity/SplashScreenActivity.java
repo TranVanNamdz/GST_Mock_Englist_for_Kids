@@ -1,4 +1,4 @@
-package com.example.gst_mock_englist_for_kids.view;
+package com.example.gst_mock_englist_for_kids.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

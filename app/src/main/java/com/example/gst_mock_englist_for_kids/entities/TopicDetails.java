@@ -1,9 +1,13 @@
 package com.example.gst_mock_englist_for_kids.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
 
 import static androidx.room.ForeignKey.CASCADE;
 
@@ -12,20 +16,24 @@ import static androidx.room.ForeignKey.CASCADE;
                 parentColumns = "id",
                 childColumns = "idTopic",
                 onDelete = CASCADE))
-public class TopicDetails {
+public class TopicDetails implements Serializable {
     @PrimaryKey
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "idTopicDt")
     private int id;
 
-    @ColumnInfo(name = "image")
+    @ColumnInfo(name = "imageTopicDt")
     private String img;
 
-    @ColumnInfo(name = "name")
+    @ColumnInfo(name = "nameTopicDt")
     private String name;
 
-    @ColumnInfo(name = "idTopic",index =true)
+    @ColumnInfo(name = "idTopic",index = true)
     private int idTopic;
 
+    public TopicDetails() {
+    }
+
+    @Ignore
     public TopicDetails(int id, String img, String name, int idTopic) {
         this.id = id;
         this.img = img;

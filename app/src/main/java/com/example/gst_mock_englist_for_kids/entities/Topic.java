@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Topic implements Serializable {
 
     @PrimaryKey
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "id",index = true)
     private int id;
 
     @ColumnInfo(name = "name")
