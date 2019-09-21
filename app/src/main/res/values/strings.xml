@@ -1,18 +1,39 @@
 <resources>
     <string name="app_name">GST_Mock_Englist_for_Kids</string>
 
+    //Text Button
     <string name="text_btn_start">Bắt đầu</string>
     <string name="text_btn_look_and_choose">Xem và chọn</string>
     <string name="text_btn_listen_and_guess">Nghe và đoán</string>
     <string name="text_btn_guess_image">Đoán Hình</string>
     <string name="text_btn_view_video">Xem video và học</string>
+    <string name="text_btn_try_again">Chơi lại</string>
+    <string name="text_btn_exit">Thoát</string>
+    <string name="btn_rePlay">Chơi lại</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="btn_rePlay">RePlay</string>
-    <string name="edittext_check_result">Input Answer</string>
-    <string name="cancel">Cancle</string>
-    <string name="action_check">Check</string>
-    <string name="edit_title">Check Answer</string>
-    <string name="tv_name_video">Video Name</string>
+    //Text
+    <string name="editext_check_result">Nhập câu trả lời</string>
+    <string name="cancel">Trở lại</string>
+    <string name="action_check">Kiểm tra</string>
+    <string name="edit_title">Kiểm tra câu trả lời</string>
+    <string name="tv_name_video">Tên Video</string>
+    <string name="title_which_is_the_picture">Hãy nghe và chọn hình nào !</string>
+    <string name="title_what_is_it">Đây là cái gì ?</string>
+    <string name="title_congratulation">Chúc mừng !</string>
+
+    //Text topic
+    <string name="alphabet">Bảng chữ cái</string>
+    <string name="number">Số đếm</string>
+    <string name="animal">Động vật</string>
+    <string name="christmas">Giáng sinh</string>
+    <string name="color">Màu sắc</string>
+    <string name="food">Đồ ăn</string>
+    <string name="fruit">Hoa quả</string>
+    <string name="flower">Bông hoa</string>
+    <string name="geometry">Hình học</string>
+    <string name="house">Nhà cửa</string>
+    <string name="nation">Quốc gia</string>
+    <string name="school">Trường học</string>
+    <string name="vehicle">Xe cộ</string>
+    <string name="water">Đồ uống</string>
 </resources>
