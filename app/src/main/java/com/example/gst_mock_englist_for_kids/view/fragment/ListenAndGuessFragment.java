@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +28,7 @@ import com.example.gst_mock_englist_for_kids.entities.ListenAnswer;
 import com.example.gst_mock_englist_for_kids.executors.MyExecutors;
 import com.example.gst_mock_englist_for_kids.room_database.database.Database;
 import com.example.gst_mock_englist_for_kids.utils.Constants;
+import com.example.gst_mock_englist_for_kids.utils.MyDialogListener;
 import com.example.gst_mock_englist_for_kids.view.dialogfragment.ResultListenFragment;
 
 import java.io.IOException;
@@ -41,8 +41,8 @@ import java.util.Objects;
  * A simple {@link Fragment} subclass.
  */
 public class ListenAndGuessFragment extends Fragment {
+    private MyDialogListener mDialogListener;
 
-    private static final String TAG = ListenAndGuessFragment.class.getSimpleName();
 
     private MediaPlayer mpCorrect;
 
@@ -107,10 +107,8 @@ public class ListenAndGuessFragment extends Fragment {
             });
             value.start();
             String tts = mTvName.getText().toString();
-            int speechStatus = mTextToSpeech.speak(tts, TextToSpeech.QUEUE_FLUSH, null);
-            if (speechStatus == TextToSpeech.ERROR) {
-                Log.d(TAG, "Error converting text to speech");
-            }
+            mTextToSpeech.speak(tts, TextToSpeech.QUEUE_FLUSH, null);
+
         }
     };
 
@@ -223,6 +221,7 @@ public class ListenAndGuessFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listen_and_guess, container, false);
         initViews(view);
+        refreshFragment();
         addEvents();
         return view;
     }
@@ -260,16 +259,6 @@ public class ListenAndGuessFragment extends Fragment {
             @Override
             public void onInit(int status) {
                 mTextToSpeech.setLanguage(Locale.US);
-                /*if (status == TextToSpeech.SUCCESS) {
-                    int ttsLang = mTextToSpeech.setLanguage(Locale.US);
-                    if (ttsLang == TextToSpeech.LANG_MISSING_DATA || ttsLang == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Log.d(TAG, "The language is not supported");
-                    } else {
-                        Log.d(TAG, "The language is supported");
-                    }
-                } else {
-                    Toast.makeText(getContext(), "TTS Initialization failed", Toast.LENGTH_SHORT).show();
-                }*/
             }
         });
 
@@ -324,11 +313,8 @@ public class ListenAndGuessFragment extends Fragment {
             mImgD.setImageBitmap(getBitmapFromAssets(mCurrentAnswer.getImgD()));
 
             String tts = mCurrentAnswer.getName();
-            Log.d(TAG, tts + " tts");
-            int speechStatus = mTextToSpeech.speak(tts, TextToSpeech.QUEUE_FLUSH, null);
-            if (speechStatus == TextToSpeech.ERROR) {
-                Log.d(TAG, "Error converting text to speech");
-            }
+            mTextToSpeech.speak(tts, TextToSpeech.QUEUE_FLUSH, null);
+
             mQuestionCounter++;
         } else {
             finishQuiz();
@@ -338,7 +324,7 @@ public class ListenAndGuessFragment extends Fragment {
     private void finishQuiz() {
         if (getFragmentManager() != null) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            DialogFragment resultFragment = new ResultListenFragment();
+            DialogFragment resultFragment = new ResultListenFragment(mDialogListener);
             resultFragment.show(ft, Constants.TAG_FRAGMENT_DIALOG_LISTEN);
             resultFragment.setCancelable(false);
         }
@@ -353,5 +339,27 @@ public class ListenAndGuessFragment extends Fragment {
             e.printStackTrace();
         }
         return BitmapFactory.decodeStream(is);
+    }
+
+    private void refreshFragment() {
+        mDialogListener = new MyDialogListener() {
+            @Override
+            public void onCloseDialog() {
+                mQuestionCounter = 0;
+                MyExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        mList = mDatabase.iTopicDao().getListListenAnswer();
+                        mQuestionCountTotal = mList.size();
+                        Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                showNextQuestion();
+                            }
+                        });
+                    }
+                });
+            }
+        };
     }
 }

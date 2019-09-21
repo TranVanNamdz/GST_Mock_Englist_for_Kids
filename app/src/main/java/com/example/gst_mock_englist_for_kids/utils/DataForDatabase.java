@@ -3,6 +3,7 @@ package com.example.gst_mock_englist_for_kids.utils;
 import android.content.Context;
 
 
+import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.entities.ImageAnswer;
 import com.example.gst_mock_englist_for_kids.entities.ListenAnswer;
 import com.example.gst_mock_englist_for_kids.entities.Topic;
@@ -27,20 +28,20 @@ public final class DataForDatabase {
 
     public void addDataTopicTable() {
         final List<Topic> list = new ArrayList<>();
-        list.add(new Topic(1, "Bảng chữ cái", "img_topic/alphabet.png"));
-        list.add(new Topic(2, "Số đếm", "img_topic/number.png"));
-        list.add(new Topic(3, "Động vật", "img_topic/animal.png"));
-        list.add(new Topic(4, "Giáng sinh", "img_topic/christmas.png"));
-        list.add(new Topic(5, "Màu sắc", "img_topic/color.png"));
-        list.add(new Topic(6, "Đồ ăn", "img_topic/food.png"));
-        list.add(new Topic(7, "Hoa quả", "img_topic/fruit.png"));
-        list.add(new Topic(8, "Bông Hoa", "img_topic/flower.png"));
-        list.add(new Topic(9, "Hình học", "img_topic/geometry.png"));
-        list.add(new Topic(10, "Nhà cửa", "img_topic/house.png"));
-        list.add(new Topic(11, "Quốc gia", "img_topic/nation.png"));
-        list.add(new Topic(12, "Trường học", "img_topic/school.png"));
-        list.add(new Topic(13, "Xe cộ", "img_topic/vehicle.png"));
-        list.add(new Topic(14, "Đồ uống", "img_topic/water.png"));
+        list.add(new Topic(1, mContext.getResources().getString(R.string.alphabet), "img_topic/alphabet.png"));
+        list.add(new Topic(2, mContext.getResources().getString(R.string.number), "img_topic/number.png"));
+        list.add(new Topic(3, mContext.getResources().getString(R.string.animal), "img_topic/animal.png"));
+        list.add(new Topic(4, mContext.getResources().getString(R.string.christmas), "img_topic/christmas.png"));
+        list.add(new Topic(5, mContext.getResources().getString(R.string.color), "img_topic/color.png"));
+        list.add(new Topic(6, mContext.getResources().getString(R.string.food), "img_topic/food.png"));
+        list.add(new Topic(7, mContext.getResources().getString(R.string.fruit), "img_topic/fruit.png"));
+        list.add(new Topic(8, mContext.getResources().getString(R.string.flower), "img_topic/flower.png"));
+        list.add(new Topic(9, mContext.getResources().getString(R.string.geometry), "img_topic/geometry.png"));
+        list.add(new Topic(10, mContext.getResources().getString(R.string.house), "img_topic/house.png"));
+        list.add(new Topic(11, mContext.getResources().getString(R.string.nation), "img_topic/nation.png"));
+        list.add(new Topic(12, mContext.getResources().getString(R.string.school), "img_topic/school.png"));
+        list.add(new Topic(13, mContext.getResources().getString(R.string.vehicle), "img_topic/vehicle.png"));
+        list.add(new Topic(14, mContext.getResources().getString(R.string.water), "img_topic/water.png"));
 
         MyExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
@@ -396,7 +397,7 @@ public final class DataForDatabase {
         list.add(new ImageAnswer(94, "img_fruit/banana.png", "Apple", "Banana", "Blade", "Honda", "Banana"));
         list.add(new ImageAnswer(95, "img_fruit/pear.png", "Pear", "Orange", "Mangoes", "Coconut", "Pear"));
         list.add(new ImageAnswer(96, "img_fruit/grapes.png", "Mangoes", "Orange", "Grapes", "Coconut", "Grapes"));
-        list.add(new ImageAnswer(97, "img_fruit/cherry.png", "Apple", "Orange", "Grapes", "Coconut", "Cherry"));
+        list.add(new ImageAnswer(97, "img_fruit/cherry.png", "Cherry", "Orange", "Grapes", "Coconut", "Cherry"));
         list.add(new ImageAnswer(98, "img_fruit/pineapple.png", "Plums", "Orange", "Jack Fruit", "Pineapple", "Pineapple"));
         list.add(new ImageAnswer(99, "img_fruit/guava.png", "AAA", "Guava", "Tris", "Coconut", "Guava"));
         list.add(new ImageAnswer(100, "img_fruit/plums.png", "Apple", "Orange", "Plums", "Coconut", "Plums"));
@@ -487,7 +488,7 @@ public final class DataForDatabase {
         list.add(new ImageAnswer(178, "img_water/ding_tea.png", "Coffee", "Beer", "Milk-Tea", "Ding tea", "Ding tea"));
         list.add(new ImageAnswer(179, "img_water/milk_tea.png", "Strongbow", "Beer", "Milk tea", "Chivas", "Milk tea"));
         list.add(new ImageAnswer(180, "img_water/pepsi.png", "Pepsi", "Beer", "Milk-Tea", "Chivas", "Pepsi"));
-        list.add(new ImageAnswer(181, "img_water/red_bull.png", "Strongbow", "Beer", "Red bull-Tea", "Chivas", "Red bull"));
+        list.add(new ImageAnswer(181, "img_water/red_bull.png", "Strongbow", "Beer", "Red bull", "Chivas", "Red bull"));
         list.add(new ImageAnswer(182, "img_water/smoothie.png", "Coffee", "Smoothie", "Milk-Tea", "Chivas", "Smoothie"));
         list.add(new ImageAnswer(183, "img_water/tea.png", "Strongbow", "Beer", "Milk-Tea", "Tea", "Tea"));
         list.add(new ImageAnswer(184, "img_water/strongbow.png", "Strongbow", "Beer", "Milk-Tea", "Chivas", "Strongbow"));
@@ -534,7 +535,7 @@ public final class DataForDatabase {
         list.add(new ListenAnswer(29, "Three", "img_number/twelve.png", "img_number/twenty.png", "img_number/eleven.png", "img_number/three.png", "img_number/three.png"));
         list.add(new ListenAnswer(30, "Four", "img_number/fourteen.png", "img_number/four.png", "img_number/fifteen.png", "img_number/eight.png", "img_number/four.png"));
         list.add(new ListenAnswer(31, "Five", "img_number/five.png", "img_number/three.png", "img_number/sixteen.png", "img_number/one.png", "img_number/five.png"));
-        list.add(new ListenAnswer(32, "Six", "img_number/thirteen.png", "img_number/sixteen.png", "img_number/six", "img_number/seven.png", "img_number/six.png"));
+        list.add(new ListenAnswer(32, "Six", "img_number/thirteen.png", "img_number/sixteen.png", "img_number/six.png", "img_number/seven.png", "img_number/six.png"));
         list.add(new ListenAnswer(33, "Seven", "img_number/one.png", "img_number/five.png", "img_number/seven.png", "img_number/seventeen.png", "img_number/seven.png"));
         list.add(new ListenAnswer(34, "Eight", "img_number/eight.png", "img_number/seventeen.png", "img_number/five.png", "img_number/eighteen.png", "img_number/eight.png"));
         list.add(new ListenAnswer(35, "Nine", "img_number/nine.png", "img_number/ten.png", "img_number/nineteen.png", "img_number/three.png", "img_number/nine.png"));
@@ -615,7 +616,7 @@ public final class DataForDatabase {
         list.add(new ListenAnswer(102, "Rose", "img_flower/rose.png", "img_flower/sun_flower.png", "img_flower/orchid.png", "img_flower/chrysanthemum.png", "img_flower/rose.png"));
         list.add(new ListenAnswer(103, "Aster", "img_flower/rose.png", "img_flower/aster.png", "img_flower/hibiscus.png", "img_flower/flax.png", "img_flower/aster.png"));
         list.add(new ListenAnswer(104, "Carnation", "img_flower/poppy_flower.png", "img_flower/sun_flower.png", "img_flower/carnation.png", "img_flower/lotus.png", "img_flower/carnation.png"));
-        list.add(new ListenAnswer(105, "Chrysanthemum", "img_flower/rose.png", "img_flower/flax.png", "img_flower/daffodil.png", "img_flower/chrysanthemum.pnghr", "img_flower/chrysanthemum.png"));
+        list.add(new ListenAnswer(105, "Chrysanthemum", "img_flower/rose.png", "img_flower/flax.png", "img_flower/daffodil.png", "img_flower/chrysanthemum.png", "img_flower/chrysanthemum.png"));
         list.add(new ListenAnswer(106, "Daffodil", "img_flower/daffodil.png", "img_flower/tulip.png", "img_flower/carnation.png", "img_flower/aster.png", "img_flower/daffodil.png"));
         list.add(new ListenAnswer(107, "Flax", "img_flower/rose.png", "img_flower/flax.png", "img_flower/carnation.png", "img_flower/sun_flower.png", "img_flower/flax.png"));
         list.add(new ListenAnswer(108, "Hibiscus", "img_flower/carnation.png", "img_flower/poppy_flower.png", "img_flower/hibiscus.png", "img_flower/orchid.png", "img_flower/hibiscus.png"));

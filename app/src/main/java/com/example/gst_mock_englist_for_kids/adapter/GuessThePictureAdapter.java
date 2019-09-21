@@ -77,7 +77,7 @@ public class GuessThePictureAdapter extends RecyclerView.Adapter<GuessThePicture
 
         private ImageView mImgGuessPicture, mImgTick;
 
-        public GuessViewHolder(@NonNull View itemView) {
+        GuessViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mImgGuessPicture = itemView.findViewById(R.id.img_guess_picture);

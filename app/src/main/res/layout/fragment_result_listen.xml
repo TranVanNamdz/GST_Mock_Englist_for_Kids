@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Congratulation !"
+            android:text="@string/title_congratulation"
             android:textColor="@color/colorWhite" />
 
     </LinearLayout>
@@ -44,7 +44,7 @@
             android:layout_height="@dimen/button_min_height"
             android:layout_marginEnd="@dimen/margin_padding_default"
             android:background="@drawable/bg_light_button_color_red"
-            android:text="Exit"
+            android:text="@string/text_btn_exit"
             android:textAllCaps="false"
             android:textColor="@color/colorRed" />
 
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/button_min_height"
             android:background="@drawable/bg_primary_button"
-            android:text="Try Again"
+            android:text="@string/text_btn_try_again"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite" />
     </LinearLayout>

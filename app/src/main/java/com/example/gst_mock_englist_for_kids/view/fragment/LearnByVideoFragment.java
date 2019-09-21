@@ -30,6 +30,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class LearnByVideoFragment extends Fragment {
 
@@ -44,7 +45,7 @@ public class LearnByVideoFragment extends Fragment {
     private RecyclerView mRvVideo;
 
     private List<VideoEnglish> mListVideo = new ArrayList<>();
-    ;
+
 
     private VideoEnglishAdapter mVideoEnglishAdapter;
 
@@ -62,18 +63,18 @@ public class LearnByVideoFragment extends Fragment {
         mRvVideo = view.findViewById(R.id.rv_video_english);
     }
 
-    public void GetJsonYoutbue(String url) {
-        final RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+    private void GetJsonYoutbue(String url) {
+        final RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(com.android.volley.Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     JSONArray jsonArray = response.getJSONArray("items");
-                    String title = "";
-                    String link = "";
-                    String chanal = "";
-                    String idVideo = "";
-                    String description = "";
+                    String title;
+                    String link;
+                    String chanel;
+                    String idVideo;
+                    String description;
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObjectItem = jsonArray.getJSONObject(i);
                         JSONObject jsonObjectSnippet = jsonObjectItem.getJSONObject("snippet");
@@ -82,10 +83,10 @@ public class LearnByVideoFragment extends Fragment {
                         JSONObject jsonObjectThumbnail = jsonObjectSnippet.getJSONObject("thumbnails");
                         JSONObject jsonObjectMedium = jsonObjectThumbnail.getJSONObject("medium");
                         link = jsonObjectMedium.getString("url");
-                        chanal = jsonObjectSnippet.getString("channelTitle");
+                        chanel = jsonObjectSnippet.getString("channelTitle");
                         JSONObject jsonResourceID = jsonObjectSnippet.getJSONObject("resourceId");
                         idVideo = jsonResourceID.getString("videoId");
-                        mListVideo.add(new VideoEnglish(title, description, idVideo, link, chanal));
+                        mListVideo.add(new VideoEnglish(title, description, idVideo, link, chanel));
                         mVideoEnglishAdapter = new VideoEnglishAdapter(getContext(), mListVideo);
                         mRvVideo.setAdapter(mVideoEnglishAdapter);
                         mRvVideo.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
@@ -118,7 +119,7 @@ public class LearnByVideoFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "erross", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Errors", Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(jsonObjectRequest);

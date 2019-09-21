@@ -37,7 +37,7 @@ public interface IDao {
     void insertImageAnswer(List<ImageAnswer> list);
 
     //getImageQuestion
-    @Query("SELECT * FROM ImageAnswer ORDER BY RANDOM() LIMIT 2")
+    @Query("SELECT * FROM ImageAnswer ORDER BY RANDOM() LIMIT 20")
     List<ImageAnswer> getListImageAnswer();
 
     //insert ListenAnswer
@@ -45,7 +45,7 @@ public interface IDao {
     void insertListenAnswer(List<ListenAnswer> list);
 
     //getListenImageAnswer
-    @Query("SELECT * FROM ListenAnswer ORDER BY RANDOM() LIMIT 2")
+    @Query("SELECT * FROM ListenAnswer ORDER BY RANDOM() LIMIT 20")
     List<ListenAnswer> getListListenAnswer();
 
     //getRandom CheckTopicDetails

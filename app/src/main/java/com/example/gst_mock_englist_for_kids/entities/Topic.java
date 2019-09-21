@@ -2,7 +2,6 @@ package com.example.gst_mock_englist_for_kids.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -46,7 +45,4 @@ public class Topic implements Serializable {
         return img;
     }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
 }

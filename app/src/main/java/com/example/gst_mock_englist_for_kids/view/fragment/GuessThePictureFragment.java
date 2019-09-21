@@ -34,6 +34,7 @@ public class GuessThePictureFragment extends Fragment {
 
     private Database mDatabase;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private Button btnReplay;
 
     private final View.OnClickListener onClickRandomListener = new View.OnClickListener() {
@@ -89,26 +90,26 @@ public class GuessThePictureFragment extends Fragment {
                                     value.start();
 
                                     Bundle bundle = new Bundle();
-                                    if (bundle != null) {
-                                        bundle.putSerializable("data", mListGuess.get(position));
-                                        CheckAnswerDialogFragment checkAnswerFragment = new CheckAnswerDialogFragment(new CheckAnswerDialogFragment.CheckAnswerListener() {
-                                            @Override
-                                            public void onCheckItem() {
-                                                imgItemPicture.setImageAlpha(300);
-                                                imgTickTrueOrFalse.setImageResource(R.drawable.ic_tick_true);
-                                                imgItemPicture.setClickable(true);
-                                                imgItemPicture.setEnabled(false);
-                                            }
+                                    bundle.putSerializable("data", mListGuess.get(position));
+                                    CheckAnswerDialogFragment checkAnswerFragment = new CheckAnswerDialogFragment(new CheckAnswerDialogFragment.CheckAnswerListener() {
+                                        @Override
+                                        public void onCheckItem() {
+                                            imgItemPicture.setImageAlpha(300);
+                                            imgTickTrueOrFalse.setImageResource(R.drawable.ic_tick_true);
+                                            imgItemPicture.setClickable(true);
+                                            imgItemPicture.setEnabled(false);
+                                        }
 
-                                            @Override
-                                            public void onCheckedItemFalse() {
-                                                imgItemPicture.setImageAlpha(300);
-                                                imgTickTrueOrFalse.setImageResource(R.drawable.ic_tick_false);
-                                                imgItemPicture.setClickable(true);
-                                                imgItemPicture.setEnabled(false);
-                                            }
+                                        @Override
+                                        public void onCheckedItemFalse() {
+                                            imgItemPicture.setImageAlpha(300);
+                                            imgTickTrueOrFalse.setImageResource(R.drawable.ic_tick_false);
+                                            imgItemPicture.setClickable(true);
+                                            imgItemPicture.setEnabled(false);
+                                        }
 
-                                        });
+                                    });
+                                    if (getFragmentManager() != null) {
                                         checkAnswerFragment.setArguments(bundle);
                                         checkAnswerFragment.show(getFragmentManager(), "dialog");
                                         checkAnswerFragment.setCancelable(false);
@@ -121,5 +122,6 @@ public class GuessThePictureFragment extends Fragment {
             }
         });
     }
+
 
 }

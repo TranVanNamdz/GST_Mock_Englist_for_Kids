@@ -1,6 +1,5 @@
 package com.example.gst_mock_englist_for_kids.entities;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;

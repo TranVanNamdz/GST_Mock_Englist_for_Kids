@@ -9,18 +9,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.adapter.TopicAdapter;
-import com.example.gst_mock_englist_for_kids.entities.ImageAnswer;
 import com.example.gst_mock_englist_for_kids.entities.Topic;
 import com.example.gst_mock_englist_for_kids.executors.MyExecutors;
 import com.example.gst_mock_englist_for_kids.room_database.database.Database;
 import com.example.gst_mock_englist_for_kids.utils.Constants;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -28,9 +27,6 @@ import java.util.Objects;
  * A simple {@link Fragment} subclass.
  */
 public class TopicFragment extends Fragment {
-
-
-    private static final String TAG = TopicFragment.class.getSimpleName();
 
     @SuppressWarnings("FieldCanBeLocal")
     private RecyclerView mRcvTopic;
@@ -70,8 +66,6 @@ public class TopicFragment extends Fragment {
             @Override
             public void run() {
                 final List<Topic> list = mDatabase.iTopicDao().getTopicList();
-                final List<ImageAnswer> list1 = mDatabase.iTopicDao().getListImageAnswer();
-                Log.d(TAG, list1.toString());
                 if (list != null) {
                     Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
                         @Override
@@ -110,6 +104,7 @@ public class TopicFragment extends Fragment {
 
 
     }
+
     private void changeFragment(Fragment fragment) {
         FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
         transaction.replace(R.id.frContent, fragment);

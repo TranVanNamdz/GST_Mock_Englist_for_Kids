@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.utils.Constants;
+import com.example.gst_mock_englist_for_kids.utils.MyDialogListener;
 
 public class ResultLookFragment extends DialogFragment {
+
+    private MyDialogListener mDialogListener;
 
     @SuppressWarnings("FieldCanBeLocal")
     private Button mBtnTryAgain, mBtnExit;
@@ -22,6 +22,10 @@ public class ResultLookFragment extends DialogFragment {
     private final View.OnClickListener mBtnTryAgainClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            dismiss();
+            if (mDialogListener != null) {
+                mDialogListener.onCloseDialog();
+            }
         }
     };
     private final View.OnClickListener mBtnExitClick = new View.OnClickListener() {
@@ -34,7 +38,8 @@ public class ResultLookFragment extends DialogFragment {
         }
     };
 
-    public ResultLookFragment() {
+    public ResultLookFragment(MyDialogListener listener) {
+        mDialogListener = listener;
     }
 
     @Override

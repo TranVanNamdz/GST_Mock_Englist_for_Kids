@@ -25,6 +25,7 @@ import com.example.gst_mock_englist_for_kids.entities.ImageAnswer;
 import com.example.gst_mock_englist_for_kids.executors.MyExecutors;
 import com.example.gst_mock_englist_for_kids.room_database.database.Database;
 import com.example.gst_mock_englist_for_kids.utils.Constants;
+import com.example.gst_mock_englist_for_kids.utils.MyDialogListener;
 import com.example.gst_mock_englist_for_kids.view.dialogfragment.ResultLookFragment;
 
 import java.io.IOException;
@@ -36,6 +37,8 @@ import java.util.Objects;
  * A simple {@link Fragment} subclass.
  */
 public class LookAndChooseFragment extends Fragment {
+
+    private MyDialogListener mDialogListener;
 
     private MediaPlayer mpCorrect;
 
@@ -202,6 +205,7 @@ public class LookAndChooseFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_look_and_choose, container, false);
         initViews(view);
+        refreshFragment();
         addEvents();
         return view;
     }
@@ -266,8 +270,8 @@ public class LookAndChooseFragment extends Fragment {
     private void finishQuiz() {
         if (getFragmentManager() != null) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            DialogFragment resultFragment = new ResultLookFragment();
-            resultFragment.show(ft, "result fragment");
+            DialogFragment resultFragment = new ResultLookFragment(mDialogListener);
+            resultFragment.show(ft, Constants.RESULT_FRAGMENT);
             resultFragment.setCancelable(false);
         }
     }
@@ -281,6 +285,28 @@ public class LookAndChooseFragment extends Fragment {
             e.printStackTrace();
         }
         return BitmapFactory.decodeStream(is);
+    }
+
+    private void refreshFragment() {
+        mDialogListener = new MyDialogListener() {
+            @Override
+            public void onCloseDialog() {
+                mQuestionCounter = 0;
+                MyExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        mList = mDatabase.iTopicDao().getListImageAnswer();
+                        mQuestionCountTotal = mList.size();
+                        Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                showNextQuestion();
+                            }
+                        });
+                    }
+                });
+            }
+        };
     }
 
 }

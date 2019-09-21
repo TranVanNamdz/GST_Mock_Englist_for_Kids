@@ -56,7 +56,7 @@ public class VideoEnglishAdapter extends RecyclerView.Adapter<VideoEnglishAdapte
 
         private TextView mTxtNameVideo, mTxtDescription;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             mImgVideo = itemView.findViewById(R.id.img_thumbnail);
             mTxtNameVideo = itemView.findViewById(R.id.tv_titleVideo);

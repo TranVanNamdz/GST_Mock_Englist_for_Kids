@@ -7,11 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.adapter.TopicDetailsAdapter;
@@ -26,7 +24,6 @@ import java.util.Objects;
 
 
 public class TopicDetailsFragment extends Fragment {
-    private final String TAG = TopicFragment.class.getSimpleName();
 
     private TopicDetailsAdapter mTopicDetailsAdapter;
 
@@ -59,16 +56,6 @@ public class TopicDetailsFragment extends Fragment {
             @Override
             public void onInit(int status) {
                 mTextToSpeech.setLanguage(Locale.US);
-               /* if (status == TextToSpeech.SUCCESS) {
-                    int ttsLang = mTextToSpeech.setLanguage(Locale.US);
-                    if (ttsLang == TextToSpeech.LANG_MISSING_DATA || ttsLang == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Log.d(TAG, "The language is not supported");
-                    } else {
-                        Log.d(TAG, "The language is supported");
-                    }
-                } else {
-                    Toast.makeText(getContext(), "TTS Initialization failed", Toast.LENGTH_SHORT).show();
-                }*/
             }
         });
 
@@ -103,14 +90,11 @@ public class TopicDetailsFragment extends Fragment {
                                     });
                                     value.start();
                                     String tts = list.get(position).getName();
-                                    int speechStatus = mTextToSpeech.speak(tts, TextToSpeech.QUEUE_FLUSH, null);
-                                    if (speechStatus == TextToSpeech.ERROR) {
-                                        Log.d(TAG, "Error converting text to speech");
-                                    }
+                                    mTextToSpeech.speak(tts, TextToSpeech.QUEUE_FLUSH, null);
                                 }
                             });
                         } else {
-                            Log.d(TAG, "No data for this Topic");
+                            throw new NullPointerException();
                         }
                     }
                 });

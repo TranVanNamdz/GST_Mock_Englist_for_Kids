@@ -7,14 +7,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+
 
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.utils.Constants;
-
+import com.example.gst_mock_englist_for_kids.utils.MyDialogListener;
 
 public class ResultListenFragment extends DialogFragment {
+
+    private MyDialogListener mDialogListener;
 
     @SuppressWarnings("FieldCanBeLocal")
     private Button mBtnTryAgain, mBtnExit;
@@ -22,17 +23,10 @@ public class ResultListenFragment extends DialogFragment {
     private final View.OnClickListener mBtnTryAgainClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Fragment fragment;
-            if (getFragmentManager() != null) {
-                fragment = getFragmentManager().findFragmentByTag(Constants.TAG_FRAGMENT_LISTEN);
-                final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                if (fragment != null) {
-                    ft.detach(fragment);
-                    ft.attach(fragment);
-                    ft.commit();
-                }
+            dismiss();
+            if (mDialogListener != null) {
+                mDialogListener.onCloseDialog();
             }
-
         }
     };
     private final View.OnClickListener mBtnExitClick = new View.OnClickListener() {
@@ -45,14 +39,16 @@ public class ResultListenFragment extends DialogFragment {
         }
     };
 
-    public ResultListenFragment() {
+    public ResultListenFragment(MyDialogListener listener) {
+        mDialogListener = listener;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_result_listen, container, false);
-        initViews(view);
-        return view;
+        View mView = inflater.inflate(R.layout.fragment_result_listen, container, false);
+
+        initViews(mView);
+        return mView;
     }
 
     private void initViews(View view) {

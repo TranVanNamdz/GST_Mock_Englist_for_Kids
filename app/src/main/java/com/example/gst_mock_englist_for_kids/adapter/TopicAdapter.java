@@ -31,8 +31,6 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHol
 
     private final LayoutInflater mInflater;
 
-    private int mIndex = 0;
-
 
     public TopicAdapter(Context context, List<Topic> list) {
         this.mContext = context;
@@ -73,30 +71,6 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHol
         return BitmapFactory.decodeStream(is);
     }
 
-    /*@Override
-    public void onViewAttachedToWindow(@NonNull final TopicViewHolder holder) {
-        super.onViewAttachedToWindow(holder);
-        holder.itemView.post(new Runnable() {
-            @Override
-            public void run() {
-                AnimationSet mAnimationSet = new AnimationSet(false);
-                AlphaAnimation mFade = new AlphaAnimation(0.0f, 1.5f);
-                mFade.setDuration(300);
-                TranslateAnimation mTranslateAnimation;
-                if (holder.getAdapterPosition() >= mIndex) {
-                    mTranslateAnimation = new TranslateAnimation(0, 0, holder.itemView.getHeight(), 0);
-                } else {
-                    mTranslateAnimation = new TranslateAnimation(0, 0, -holder.itemView.getHeight(), 0);
-
-                }
-                mIndex = holder.getAdapterPosition();
-                mTranslateAnimation.setDuration(300);
-                mAnimationSet.addAnimation(mFade);
-                mAnimationSet.addAnimation(mTranslateAnimation);
-                holder.itemView.startAnimation(mAnimationSet);
-            }
-        });
-    }*/
     class TopicViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView imgTopic;

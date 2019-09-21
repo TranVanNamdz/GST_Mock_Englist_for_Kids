@@ -23,21 +23,26 @@ import com.example.gst_mock_englist_for_kids.entities.TopicDetails;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 public class CheckAnswerDialogFragment extends DialogFragment {
 
     private View view;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private Button btnCancle, btnCheck;
 
     private EditText mEdtInputAnswer;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private AppCompatImageView mImgCloseCheckAnswer;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private MediaPlayer mMediaPlayer;
 
     private ImageView mImgPicture;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private Bundle mBundle = null;
 
     private TopicDetails mTopicDetails = null;
@@ -47,25 +52,24 @@ public class CheckAnswerDialogFragment extends DialogFragment {
         public void onClick(View v) {
             if (mTopicDetails != null) {
                 String inputAnswer = mEdtInputAnswer.getText().toString().trim();
-               if (inputAnswer.isEmpty() || inputAnswer.length() == 0 || inputAnswer.equals("") || inputAnswer == null){
-                   mEdtInputAnswer.setError("Please enter the answer");
-               }
-               else {
-                   if (inputAnswer.equalsIgnoreCase(mTopicDetails.getName())) {
-                       mMediaPlayer = MediaPlayer.create(getContext(), R.raw.correct);
-                       mMediaPlayer.start();
-                       if (mListener != null) {
-                           mListener.onCheckItem();
-                       }
-                       dismiss();
-                   } else {
-                       mMediaPlayer = MediaPlayer.create(getContext(), R.raw.wrong);
-                       mMediaPlayer.start();
-                       if (mListener != null) {
-                           mListener.onCheckedItemFalse();
-                       }
-                       dismiss();
-               }
+                if (inputAnswer.isEmpty()) {
+                    mEdtInputAnswer.setError("Please enter the answer");
+                } else {
+                    if (inputAnswer.equalsIgnoreCase(mTopicDetails.getName())) {
+                        mMediaPlayer = MediaPlayer.create(getContext(), R.raw.correct);
+                        mMediaPlayer.start();
+                        if (mListener != null) {
+                            mListener.onCheckItem();
+                        }
+                        dismiss();
+                    } else {
+                        mMediaPlayer = MediaPlayer.create(getContext(), R.raw.wrong);
+                        mMediaPlayer.start();
+                        if (mListener != null) {
+                            mListener.onCheckedItemFalse();
+                        }
+                        dismiss();
+                    }
 
                 }
 
@@ -73,12 +77,8 @@ public class CheckAnswerDialogFragment extends DialogFragment {
         }
     };
 
-    /**
-     * @param @get url from data asset
-     * @return @type bitmap
-     */
     private Bitmap getBitmapFromAssets(String img) {
-        AssetManager am = getContext().getAssets();
+        AssetManager am = Objects.requireNonNull(getContext()).getAssets();
         InputStream is = null;
         try {
 
@@ -90,7 +90,7 @@ public class CheckAnswerDialogFragment extends DialogFragment {
         return BitmapFactory.decodeStream(is);
     }
 
-    private final View.OnClickListener onClickCancleListener = new View.OnClickListener() {
+    private final View.OnClickListener onClickCancelListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             dismiss();
@@ -106,7 +106,7 @@ public class CheckAnswerDialogFragment extends DialogFragment {
 
     private CheckAnswerListener mListener;
 
-    public CheckAnswerDialogFragment(CheckAnswerListener listener) {
+    CheckAnswerDialogFragment(CheckAnswerListener listener) {
         mListener = listener;
     }
 
@@ -115,16 +115,17 @@ public class CheckAnswerDialogFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.dialog_fragment_check_result, container, false);
         mBundle = getArguments();
-        mTopicDetails = (TopicDetails) mBundle.getSerializable("data");
-        initView();
-        mImgPicture.setImageBitmap(getBitmapFromAssets(mTopicDetails.getImg()));
-
+        if (mBundle != null) {
+            mTopicDetails = (TopicDetails) mBundle.getSerializable("data");
+            initView();
+            mImgPicture.setImageBitmap(getBitmapFromAssets(mTopicDetails.getImg()));
+        }
         return view;
     }
 
     private void initView() {
 
-        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Objects.requireNonNull(getDialog()).requestWindowFeature(Window.FEATURE_NO_TITLE);
         btnCancle = view.findViewById(R.id.btnCancel);
         btnCheck = view.findViewById(R.id.btnCheckAnswer);
         mEdtInputAnswer = view.findViewById(R.id.etInputAnswer);
@@ -132,7 +133,7 @@ public class CheckAnswerDialogFragment extends DialogFragment {
         mImgPicture = view.findViewById(R.id.img_pic);
 
         btnCheck.setOnClickListener(onClickCheckListener);
-        btnCancle.setOnClickListener(onClickCancleListener);
+        btnCancle.setOnClickListener(onClickCancelListener);
         mImgCloseCheckAnswer.setOnClickListener(onClickCloseListener);
     }
 

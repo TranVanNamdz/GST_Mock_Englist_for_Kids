@@ -74,12 +74,14 @@
         app:layout_constraintTop_toBottomOf="@+id/btnMiniGame" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="52dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="44dp"
+        android:id="@+id/btnLanguage"
+        android:layout_width="wrap_content"
         android:clickable="true"
+        app:maxImageSize="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

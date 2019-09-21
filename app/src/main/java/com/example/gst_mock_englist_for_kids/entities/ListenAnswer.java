@@ -58,39 +58,22 @@ public class ListenAnswer {
         return imgA;
     }
 
-    public void setImgA(String imgA) {
-        this.imgA = imgA;
-    }
-
     public String getImgB() {
         return imgB;
-    }
-
-    public void setImgB(String imgB) {
-        this.imgB = imgB;
     }
 
     public String getImgC() {
         return imgC;
     }
 
-    public void setImgC(String imgC) {
-        this.imgC = imgC;
-    }
 
     public String getImgD() {
         return imgD;
     }
 
-    public void setImgD(String imgD) {
-        this.imgD = imgD;
-    }
 
     public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
 }
