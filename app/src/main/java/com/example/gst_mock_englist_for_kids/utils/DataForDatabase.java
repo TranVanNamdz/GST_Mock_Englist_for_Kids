@@ -565,7 +565,7 @@ public final class DataForDatabase {
         list.add(new ListenAnswer(58, "Chicken", "img_animal/dog.png", "img_animal/chicken.png", "img_animal/cat.png", "img_animal/hippo.png", "img_animal/chicken.png"));
         list.add(new ListenAnswer(59, "Pig", "img_animal/dog.png", "img_animal/elephant.png", "img_animal/pig.png", "img_animal/chicken.png", "img_animal/pig.png"));
         list.add(new ListenAnswer(60, "Cow", "img_animal/hippo.png", "img_animal/eagle.png", "img_animal/cow.png", "img_animal/parrot.png", "img_animal/cow.png"));
-        list.add(new ListenAnswer(61, "Butterfly", "img_animal/bear.png", "img_animal/leopard.png", "img_animal/dog.png", "img_animal/cow.png", "img_animal/butterfly.png"));
+        list.add(new ListenAnswer(61, "Butterfly", "img_animal/bear.png", "img_animal/butterfly.png", "img_animal/dog.png", "img_animal/cow.png", "img_animal/butterfly.png"));
 
         list.add(new ListenAnswer(62, "Angle", "img_christmas/mistletoe.png", "img_christmas/angle.png", "img_christmas/snowman.png", "img_christmas/sleigh.png", "img_christmas/angle.png"));
         list.add(new ListenAnswer(63, "Christmas tree", "img_christmas/mistletoe.png", "img_christmas/christmas_tree.png", "img_christmas/snowman.png", "img_christmas/angle.png", "img_christmas/christmas_tree.png"));
@@ -634,7 +634,7 @@ public final class DataForDatabase {
         list.add(new ListenAnswer(118, "Heart", "img_geometry/heart.png", "img_geometry/star.png", "img_geometry/triangle.png", "img_geometry/pyramid.png", "img_geometry/heart.png"));
         list.add(new ListenAnswer(119, "Pentagon", "img_geometry/circle.png", "img_geometry/pentagon.png", "img_geometry/diamond.png", "img_geometry/trapezoid.png", "img_geometry/pentagon.png"));
         list.add(new ListenAnswer(120, "Pyramid", "img_geometry/hexagon.png", "img_geometry/heart.png", "img_geometry/pyramid.png", "img_geometry/star.png", "img_geometry/pyramid.png"));
-        list.add(new ListenAnswer(121, "Star", "img_geometry/diamond.png", "img_geometry/", "img_geometry/cross.png", "img_geometry/star.png", "img_geometry/star.png"));
+        list.add(new ListenAnswer(121, "Star", "img_geometry/diamond.png", "img_geometry/triangle.png", "img_geometry/cross.png", "img_geometry/star.png", "img_geometry/star.png"));
         list.add(new ListenAnswer(122, "Rectangle", "img_geometry/rectangle.png", "img_geometry/square.png", "img_geometry/triangle.png", "img_geometry/diamond.png", "img_geometry/rectangle.png"));
         list.add(new ListenAnswer(123, "Square", "img_geometry/cross.png", "img_geometry/square.png", "img_geometry/star.png", "img_geometry/heart.png", "img_geometry/square.png"));
         list.add(new ListenAnswer(124, "Trapezoid", "img_geometry/pentagon.png", "img_geometry/hexagon.png", "img_geometry/diamond.png", "img_geometry/trapezoid.png", "img_geometry/trapezoid.png"));

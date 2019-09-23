@@ -44,7 +44,7 @@ public class ResultLookFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_result_look, container, false);
+        View view = inflater.inflate(R.layout.dialog_fragment_result_look, container, false);
         initViews(view);
         return view;
     }

@@ -40,7 +40,7 @@ public class VideoEnglishAdapter extends RecyclerView.Adapter<VideoEnglishAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         VideoEnglish videoEnglish = mListVideo.get(position);
-        Picasso.with(mContext).load(videoEnglish.getmThumbnail()).into(holder.mImgVideo);
+        Picasso.with(mContext).load(videoEnglish.getmThumbnail()).placeholder(R.drawable.ic_place_holder).into(holder.mImgVideo);
         holder.mTxtNameVideo.setText(videoEnglish.getmTitle());
         holder.mTxtDescription.setText(videoEnglish.getmDescription());
     }

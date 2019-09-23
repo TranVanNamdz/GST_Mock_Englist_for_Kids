@@ -18,11 +18,12 @@
         <TextView
             android:id="@+id/tvUnitTitleName"
             style="@style/FontHeaderTitle"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/tv_width_dialog_result"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/title_congratulation"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            tools:ignore="InefficientWeight" />
 
     </LinearLayout>
 

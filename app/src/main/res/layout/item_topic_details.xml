@@ -6,16 +6,17 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="100dp"
+        android:layout_width="@dimen/lin_width_item_topic_detail"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <ImageView
             android:id="@+id/imgTopicDetails"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="@dimen/img_height_item_topic_detail"
+            android:layout_marginTop="@dimen/img_margin_top_item_topic_detail"
             android:gravity="center_horizontal"
             android:scaleType="fitXY"
             tools:ignore="ContentDescription" />
@@ -24,10 +25,10 @@
 
             android:textColor="@android:color/black"
             android:id="@+id/tvNameTopicDetails"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/tv_width_item_topic_detail"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="13sp"
+            android:textSize="@dimen/tv_size_item_topic_detail"
             android:textStyle="bold" />
     </LinearLayout>
 

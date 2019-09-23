@@ -45,7 +45,7 @@ public class ResultListenFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View mView = inflater.inflate(R.layout.fragment_result_listen, container, false);
+        View mView = inflater.inflate(R.layout.dialog_fragment_result_listen, container, false);
 
         initViews(mView);
         return mView;

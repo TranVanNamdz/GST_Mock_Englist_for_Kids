@@ -1,7 +1,10 @@
 package com.example.gst_mock_englist_for_kids.view.fragment;
 
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +25,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.adapter.VideoEnglishAdapter;
 import com.example.gst_mock_englist_for_kids.entities.VideoEnglish;
+import com.example.gst_mock_englist_for_kids.utils.Constants;
+import com.example.gst_mock_englist_for_kids.utils.NetworkConnection;
 import com.example.gst_mock_englist_for_kids.view.activity.LearnForVideoActivity;
 
 import org.json.JSONArray;
@@ -36,16 +41,9 @@ public class LearnByVideoFragment extends Fragment {
 
     private View view;
 
-    public static String API_KEY = "AIzaSyD6W_TJyg_2vyzw3we2YOSXIod2zBBhrx4";
-
-    private String ID_PLAYLIST = "PLQDIMgoD-XFS4JfrC6dQtlyZKJqVLr3pl";
-
-    private String URL_GET_JSON = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + ID_PLAYLIST + "&key=" + API_KEY + "&maxResults=50";
-
     private RecyclerView mRvVideo;
 
     private List<VideoEnglish> mListVideo = new ArrayList<>();
-
 
     private VideoEnglishAdapter mVideoEnglishAdapter;
 
@@ -55,7 +53,7 @@ public class LearnByVideoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_learn_by_video, container, false);
         initView();
-        GetJsonYoutbue(URL_GET_JSON);
+        new LoadingVideo().execute();
         return view;
     }
 
@@ -63,7 +61,7 @@ public class LearnByVideoFragment extends Fragment {
         mRvVideo = view.findViewById(R.id.rv_video_english);
     }
 
-    private void GetJsonYoutbue(String url) {
+    private void GetJsonYoutube(String url) {
         final RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(com.android.volley.Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -106,7 +104,7 @@ public class LearnByVideoFragment extends Fragment {
                                 value.start();
 
                                 Intent intent = new Intent(getContext(), LearnForVideoActivity.class);
-                                intent.putExtra("video", mListVideo.get(position).getmIdVideo());
+                                intent.putExtra(Constants.DATA_FOR_VIDEO, mListVideo.get(position).getmIdVideo());
                                 startActivity(intent);
                             }
                         });
@@ -123,6 +121,43 @@ public class LearnByVideoFragment extends Fragment {
             }
         });
         requestQueue.add(jsonObjectRequest);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private class LoadingVideo extends AsyncTask<Void, Void, Void> {
+
+     private  ProgressDialog mPrLoading;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mPrLoading = new ProgressDialog(getContext());
+            mPrLoading.setMessage("Loading wait...");
+            mPrLoading.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            if (NetworkConnection.isNetworkAvailable(Objects.requireNonNull(getContext()))){
+            GetJsonYoutube(Constants.URL_GET_JSON);
+            }
+            else {
+                Toast.makeText(getContext(), "Please Check Internet again !", Toast.LENGTH_SHORT).show();
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            try {
+                Thread.sleep(1000);
+                mPrLoading.dismiss();
+            } catch (InterruptedException e) {
+                Toast.makeText(getContext(), "False !", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 

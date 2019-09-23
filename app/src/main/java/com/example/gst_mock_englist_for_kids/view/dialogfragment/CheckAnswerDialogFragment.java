@@ -1,4 +1,4 @@
-package com.example.gst_mock_englist_for_kids.view.fragment;
+package com.example.gst_mock_englist_for_kids.view.dialogfragment;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -106,7 +106,7 @@ public class CheckAnswerDialogFragment extends DialogFragment {
 
     private CheckAnswerListener mListener;
 
-    CheckAnswerDialogFragment(CheckAnswerListener listener) {
+    public CheckAnswerDialogFragment(CheckAnswerListener listener) {
         mListener = listener;
     }
 
@@ -138,7 +138,7 @@ public class CheckAnswerDialogFragment extends DialogFragment {
     }
 
 
-    interface CheckAnswerListener {
+public  interface CheckAnswerListener {
         void onCheckItem();
 
         void onCheckedItemFalse();

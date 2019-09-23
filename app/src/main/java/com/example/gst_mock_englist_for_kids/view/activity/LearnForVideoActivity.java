@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.gst_mock_englist_for_kids.R;
-import com.example.gst_mock_englist_for_kids.view.fragment.LearnByVideoFragment;
+import com.example.gst_mock_englist_for_kids.utils.Constants;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -24,14 +24,14 @@ public class LearnForVideoActivity extends YouTubeBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_learn_for_video);
 
+        setContentView(R.layout.activity_learn_for_video);
 
         mYouTubePlayerView = findViewById(R.id.myYoutube);
 
         Intent intent = getIntent();
-        mID = intent.getStringExtra("video");
-        mYouTubePlayerView.initialize(LearnByVideoFragment.API_KEY, new YouTubePlayer.OnInitializedListener() {
+        mID = intent.getStringExtra(Constants.DATA_FOR_VIDEO);
+        mYouTubePlayerView.initialize(Constants.API_KEY, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 youTubePlayer.loadVideo(mID);
@@ -53,7 +53,7 @@ public class LearnForVideoActivity extends YouTubeBaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_VIDEO) {
-            mYouTubePlayerView.initialize(LearnByVideoFragment.API_KEY, (YouTubePlayer.OnInitializedListener) LearnForVideoActivity.this);
+            mYouTubePlayerView.initialize(Constants.API_KEY, (YouTubePlayer.OnInitializedListener) LearnForVideoActivity.this);
 
         }
         super.onActivityResult(requestCode, resultCode, data);

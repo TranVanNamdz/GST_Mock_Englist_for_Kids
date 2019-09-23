@@ -1,6 +1,8 @@
 package com.example.gst_mock_englist_for_kids.view.fragment;
 
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,9 +13,14 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.transition.ArcMotion;
+import android.transition.ChangeBounds;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.example.gst_mock_englist_for_kids.R;
@@ -109,6 +116,12 @@ public class HomeFragment extends Fragment {
         mBtnWatchVideo = view.findViewById(R.id.btnWatchVideo);
 
         mBtnLanguage = view.findViewById(R.id.btnLanguage);
+
+        actionAnimation();
+    }
+
+    private void actionAnimation() {
+
     }
 
     private void addEvents() {

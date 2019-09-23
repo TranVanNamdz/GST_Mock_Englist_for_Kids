@@ -19,11 +19,12 @@
         <TextView
             android:id="@+id/tvUnitTitleName"
             style="@style/FontHeaderTitle"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/tv_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/edit_title"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            tools:ignore="InefficientWeight" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivCloseCheckResult"
@@ -38,15 +39,15 @@
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/lin_height"
         android:background="@color/colorWhite"
         android:orientation="vertical">
 
         <ImageView
             android:scaleType="fitXY"
             android:id="@+id/img_pic"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/img_width"
+            android:layout_height="@dimen/img_height"
             android:layout_gravity="center"
             tools:ignore="ContentDescription" />
     </LinearLayout>
@@ -61,14 +62,14 @@
 
 
         <EditText
-            android:textSize="18sp"
+            android:textSize="@dimen/edt_text_size"
             android:gravity="start"
-            android:padding="15dp"
+            android:padding="@dimen/edt_padding"
             android:id="@+id/etInputAnswer"
             style="@style/FontBodyTextRegular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/edt_margin_top"
             android:background="@drawable/custom_edt_input_answer"
             android:hint="@string/editext_check_result"
             android:inputType="text"

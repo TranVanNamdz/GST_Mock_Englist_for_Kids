@@ -15,8 +15,16 @@
     <color name="color_orange">#F3683E</color>
     <color name="color_white">#F8EBEB</color>
 
-    <!--end color button-->
+
 
     <!--color background topic detail-->
     <color name="color_background_topic_details">#EEFAEFD6</color>
+
+    <!--  color fragment look and choose  -->
+    <color name="color_red_tv_question">#FA1706</color>
+    <color name="color_white_frame_layout">#DFFFFFFF</color>
+
+    <!--  color item video   -->
+
+    <color name="color_gray_tv_description">#80807C</color>
 </resources>
