@@ -33,13 +33,17 @@ public final class Constants {
 
     public static final String DATA_FOR_VIDEO = "video";
 
+    public  static final String SET_ERRORS_EDT = "Please enter the answer";
+
     public static final String API_KEY = "AIzaSyD6W_TJyg_2vyzw3we2YOSXIod2zBBhrx4";
+
+    public static final String TAG_FRAGMENT_VIDEO = "tag4";
 
     private static final String ID_PLAYLIST = "PLQDIMgoD-XFS4JfrC6dQtlyZKJqVLr3pl";
 
     public static final String URL_GET_JSON = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + ID_PLAYLIST + "&key=" + API_KEY + "&maxResults=50";
 
-    public static int FLAG_HOME_FRAGMENT = 1;
+    public static final int FLAG_HOME_FRAGMENT = 1;
 
 
     private Constants() {

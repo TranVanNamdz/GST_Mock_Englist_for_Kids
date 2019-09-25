@@ -59,7 +59,6 @@ public class ListenAndGuessFragment extends Fragment {
 
     private Database mDatabase;
 
-    @SuppressWarnings("FieldCanBeLocal")
     private int mQuestionCounter;
 
     private int mQuestionCountTotal;
@@ -69,7 +68,7 @@ public class ListenAndGuessFragment extends Fragment {
     private List<ListenAnswer> mList;
 
     @SuppressWarnings("FieldCanBeLocal")
-    private boolean mAnswer = false;
+    private final boolean mAnswer = false;
 
     private final View.OnClickListener mBtnHomeClick = new View.OnClickListener() {
         @Override

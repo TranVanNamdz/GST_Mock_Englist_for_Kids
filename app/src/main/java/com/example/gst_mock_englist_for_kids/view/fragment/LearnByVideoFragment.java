@@ -2,7 +2,9 @@ package com.example.gst_mock_englist_for_kids.view.fragment;
 
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -43,7 +45,9 @@ public class LearnByVideoFragment extends Fragment {
 
     private RecyclerView mRvVideo;
 
-    private List<VideoEnglish> mListVideo = new ArrayList<>();
+
+
+    private final List<VideoEnglish> mListVideo = new ArrayList<>();
 
     private VideoEnglishAdapter mVideoEnglishAdapter;
 
@@ -53,24 +57,52 @@ public class LearnByVideoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_learn_by_video, container, false);
         initView();
-        new LoadingVideo().execute();
+        checkInternet();
         return view;
     }
+
+    private void checkInternet() {
+        if (NetworkConnection.isNetworkAvailable(Objects.requireNonNull(getContext()))) {
+            new LoadingVideo().execute();
+
+        } else {
+            showDialog();
+
+        }
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(R.string.check_internet);
+        builder.setMessage(R.string.check_your_internet);
+        builder.setCancelable(false);
+        builder.setNegativeButton(R.string.exit, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (getFragmentManager() != null) {
+                    getFragmentManager().popBackStack(Constants.BACK_STACK_HOME_FRAGMENT, Constants.FLAG_HOME_FRAGMENT);
+                    dialog.dismiss();
+                }
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
 
     private void initView() {
         mRvVideo = view.findViewById(R.id.rv_video_english);
     }
 
-    private void GetJsonYoutube(String url) {
+    private List<VideoEnglish> GetJsonYoutube() {
         final RequestQueue requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(com.android.volley.Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(com.android.volley.Request.Method.GET, Constants.URL_GET_JSON, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     JSONArray jsonArray = response.getJSONArray("items");
                     String title;
                     String link;
-                    String chanel;
                     String idVideo;
                     String description;
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -81,52 +113,70 @@ public class LearnByVideoFragment extends Fragment {
                         JSONObject jsonObjectThumbnail = jsonObjectSnippet.getJSONObject("thumbnails");
                         JSONObject jsonObjectMedium = jsonObjectThumbnail.getJSONObject("medium");
                         link = jsonObjectMedium.getString("url");
-                        chanel = jsonObjectSnippet.getString("channelTitle");
                         JSONObject jsonResourceID = jsonObjectSnippet.getJSONObject("resourceId");
                         idVideo = jsonResourceID.getString("videoId");
-                        mListVideo.add(new VideoEnglish(title, description, idVideo, link, chanel));
-                        mVideoEnglishAdapter = new VideoEnglishAdapter(getContext(), mListVideo);
-                        mRvVideo.setAdapter(mVideoEnglishAdapter);
-                        mRvVideo.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-                        mVideoEnglishAdapter.onItemClickVideoListener(new VideoEnglishAdapter.OnItemVideoClickListener() {
-                            @Override
-                            public void onItemClick(final View view, int position) {
-                                final ValueAnimator value = ValueAnimator.ofFloat(1.3f, 1.0f);
-                                value.setDuration(300);
-                                value.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                                    @Override
-                                    public void onAnimationUpdate(ValueAnimator animation) {
-                                        float progress = (float) value.getAnimatedValue();
-                                        view.setScaleX(progress);
-                                        view.setScaleY(progress);
-                                    }
-                                });
-                                value.start();
-
-                                Intent intent = new Intent(getContext(), LearnForVideoActivity.class);
-                                intent.putExtra(Constants.DATA_FOR_VIDEO, mListVideo.get(position).getmIdVideo());
-                                startActivity(intent);
-                            }
-                        });
+                        mListVideo.add(new VideoEnglish(title, description, idVideo, link));
                     }
                     mVideoEnglishAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Toast.makeText(getContext(), R.string.check_your_internet, Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Errors", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.check_your_internet, Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(jsonObjectRequest);
+        return mListVideo;
     }
 
     @SuppressLint("StaticFieldLeak")
-    private class LoadingVideo extends AsyncTask<Void, Void, Void> {
+    private class LoadingVideo extends AsyncTask<Void, Void, List<VideoEnglish>> {
 
-     private  ProgressDialog mPrLoading;
+        private ProgressDialog mPrLoading;
+
+
+        @Override
+        protected List<VideoEnglish> doInBackground(Void... voids) {
+            if (NetworkConnection.isNetworkAvailable(Objects.requireNonNull(getContext()))) {
+
+                return GetJsonYoutube();
+
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<VideoEnglish> videoEnglishes) {
+            super.onPostExecute(videoEnglishes);
+            mPrLoading.dismiss();
+            mVideoEnglishAdapter = new VideoEnglishAdapter(getContext(), mListVideo);
+            mRvVideo.setAdapter(mVideoEnglishAdapter);
+            mRvVideo.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+            mVideoEnglishAdapter.onItemClickVideoListener(new VideoEnglishAdapter.OnItemVideoClickListener() {
+                @Override
+                public void onItemClick(final View view, int position) {
+                    final ValueAnimator value = ValueAnimator.ofFloat(1.3f, 1.0f);
+                    value.setDuration(300);
+                    value.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                        @Override
+                        public void onAnimationUpdate(ValueAnimator animation) {
+                            float progress = (float) value.getAnimatedValue();
+                            view.setScaleX(progress);
+                            view.setScaleY(progress);
+                        }
+                    });
+                    value.start();
+
+                    Intent intent = new Intent(getContext(), LearnForVideoActivity.class);
+                    intent.putExtra(Constants.DATA_FOR_VIDEO, mListVideo.get(position).getIdVideo());
+                    startActivity(intent);
+                }
+            });
+        }
 
         @Override
         protected void onPreExecute() {
@@ -136,29 +186,8 @@ public class LearnByVideoFragment extends Fragment {
             mPrLoading.show();
         }
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            if (NetworkConnection.isNetworkAvailable(Objects.requireNonNull(getContext()))){
-            GetJsonYoutube(Constants.URL_GET_JSON);
-            }
-            else {
-                Toast.makeText(getContext(), "Please Check Internet again !", Toast.LENGTH_SHORT).show();
 
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            try {
-                Thread.sleep(1000);
-                mPrLoading.dismiss();
-            } catch (InterruptedException e) {
-                Toast.makeText(getContext(), "False !", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 
-
 }
+

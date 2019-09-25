@@ -75,7 +75,8 @@ public class GuessThePictureAdapter extends RecyclerView.Adapter<GuessThePicture
 
     class GuessViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView mImgGuessPicture, mImgTick;
+        private final ImageView mImgGuessPicture;
+        private final ImageView mImgTick;
 
         GuessViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,7 +92,7 @@ public class GuessThePictureAdapter extends RecyclerView.Adapter<GuessThePicture
         void onClickItemImage(ImageView imgItemPicture, ImageView imgTick, int position);
     }
 
-    public void onItemCLickListener(OnItemClickItemForGuessThePicture listenner) {
-        mOnItemClickItemForGuessThePicture = listenner;
+    public void onItemCLickListener(OnItemClickItemForGuessThePicture listener) {
+        mOnItemClickItemForGuessThePicture = listener;
     }
 }

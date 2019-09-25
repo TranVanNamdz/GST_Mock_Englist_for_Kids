@@ -14,7 +14,7 @@ import com.example.gst_mock_englist_for_kids.utils.MyDialogListener;
 
 public class ResultLookFragment extends DialogFragment {
 
-    private MyDialogListener mDialogListener;
+    private final MyDialogListener mDialogListener;
 
     @SuppressWarnings("FieldCanBeLocal")
     private Button mBtnTryAgain, mBtnExit;

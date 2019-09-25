@@ -27,8 +27,12 @@
     <string name="text_btn_view_video">Learn by Video</string>
     <string name="title_congratulation">Congratulation</string>
     <string name="title_what_is_it">What is it ?</string>
-    <string name="title_which_is_the_picture">Which is the picture</string>
+    <string name="title_which_is_the_picture">Which is the picture ?</string>
     <string name="tv_name_video">Video name</string>
     <string name="vehicle">Vehicle</string>
     <string name="water">Drinks</string>
+    <!-- Toast exception youtube   -->
+    <string name="check_your_internet">Please check your internet connection !</string>
+    <string name="check_internet">Networking Errors !</string>
+    <string name="exit">Exit</string>
 </resources>

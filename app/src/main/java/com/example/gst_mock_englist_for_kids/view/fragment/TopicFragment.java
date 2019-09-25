@@ -28,16 +28,12 @@ import java.util.Objects;
  */
 public class TopicFragment extends Fragment {
 
-    @SuppressWarnings("FieldCanBeLocal")
     private RecyclerView mRcvTopic;
 
-    @SuppressWarnings("FieldCanBeLocal")
     private TopicAdapter mTopicAdapter;
 
 
     private Database mDatabase;
-
-    @SuppressWarnings("FieldCanBeLocal")
 
     public TopicFragment() {
         // Required empty public constructor

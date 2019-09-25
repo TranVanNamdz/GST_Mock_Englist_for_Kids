@@ -14,19 +14,19 @@ public class ListenAnswer {
     private String name;
 
     @ColumnInfo(name = "imageA")
-    private String imgA;
+    private final String imgA;
 
     @ColumnInfo(name = "imageB")
-    private String imgB;
+    private final String imgB;
 
     @ColumnInfo(name = "imageC")
-    private String imgC;
+    private final String imgC;
 
     @ColumnInfo(name = "imageD")
-    private String imgD;
+    private final String imgD;
 
     @ColumnInfo(name = "answer")
-    private String answer;
+    private final String answer;
 
     public ListenAnswer(int id, String name, String imgA, String imgB, String imgC, String imgD, String answer) {
         this.id = id;

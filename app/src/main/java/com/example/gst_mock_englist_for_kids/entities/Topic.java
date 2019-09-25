@@ -17,7 +17,7 @@ public class Topic implements Serializable {
     private String name;
 
     @ColumnInfo(name = "image")
-    private String img;
+    private final String img;
 
     public Topic(int id, String name, String img) {
         this.id = id;

@@ -40,9 +40,9 @@ public class VideoEnglishAdapter extends RecyclerView.Adapter<VideoEnglishAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         VideoEnglish videoEnglish = mListVideo.get(position);
-        Picasso.with(mContext).load(videoEnglish.getmThumbnail()).placeholder(R.drawable.ic_place_holder).into(holder.mImgVideo);
-        holder.mTxtNameVideo.setText(videoEnglish.getmTitle());
-        holder.mTxtDescription.setText(videoEnglish.getmDescription());
+        Picasso.with(mContext).load(videoEnglish.getThumbnail()).placeholder(R.drawable.ic_place_holder).into(holder.mImgVideo);
+        holder.mTxtNameVideo.setText(videoEnglish.getTitle());
+        holder.mTxtDescription.setText(videoEnglish.getDescription());
     }
 
     @Override
@@ -52,9 +52,10 @@ public class VideoEnglishAdapter extends RecyclerView.Adapter<VideoEnglishAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private ImageView mImgVideo;
+        private final ImageView mImgVideo;
 
-        private TextView mTxtNameVideo, mTxtDescription;
+        private final TextView mTxtNameVideo;
+        private final TextView mTxtDescription;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);

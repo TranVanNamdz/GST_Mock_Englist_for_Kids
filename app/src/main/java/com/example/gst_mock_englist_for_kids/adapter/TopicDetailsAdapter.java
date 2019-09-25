@@ -77,8 +77,8 @@ public class TopicDetailsAdapter extends RecyclerView.Adapter<TopicDetailsAdapte
 
 
     class TopicDetailsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView imgTopicDetails;
-        private TextView tvNameTopicDetails;
+        private final ImageView imgTopicDetails;
+        private final TextView tvNameTopicDetails;
 
         TopicDetailsHolder(@NonNull View itemView) {
             super(itemView);

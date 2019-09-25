@@ -20,6 +20,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.gst_mock_englist_for_kids.R;
 import com.example.gst_mock_englist_for_kids.entities.TopicDetails;
+import com.example.gst_mock_englist_for_kids.utils.Constants;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +31,7 @@ public class CheckAnswerDialogFragment extends DialogFragment {
     private View view;
 
     @SuppressWarnings("FieldCanBeLocal")
-    private Button btnCancle, btnCheck;
+    private Button btnCancel, btnCheck;
 
     private EditText mEdtInputAnswer;
 
@@ -53,7 +54,7 @@ public class CheckAnswerDialogFragment extends DialogFragment {
             if (mTopicDetails != null) {
                 String inputAnswer = mEdtInputAnswer.getText().toString().trim();
                 if (inputAnswer.isEmpty()) {
-                    mEdtInputAnswer.setError("Please enter the answer");
+                    mEdtInputAnswer.setError(Constants.SET_ERRORS_EDT);
                 } else {
                     if (inputAnswer.equalsIgnoreCase(mTopicDetails.getName())) {
                         mMediaPlayer = MediaPlayer.create(getContext(), R.raw.correct);
@@ -104,7 +105,7 @@ public class CheckAnswerDialogFragment extends DialogFragment {
         }
     };
 
-    private CheckAnswerListener mListener;
+    private final CheckAnswerListener mListener;
 
     public CheckAnswerDialogFragment(CheckAnswerListener listener) {
         mListener = listener;
@@ -126,14 +127,14 @@ public class CheckAnswerDialogFragment extends DialogFragment {
     private void initView() {
 
         Objects.requireNonNull(getDialog()).requestWindowFeature(Window.FEATURE_NO_TITLE);
-        btnCancle = view.findViewById(R.id.btnCancel);
+        btnCancel = view.findViewById(R.id.btnCancel);
         btnCheck = view.findViewById(R.id.btnCheckAnswer);
         mEdtInputAnswer = view.findViewById(R.id.etInputAnswer);
         mImgCloseCheckAnswer = view.findViewById(R.id.ivCloseCheckResult);
         mImgPicture = view.findViewById(R.id.img_pic);
 
         btnCheck.setOnClickListener(onClickCheckListener);
-        btnCancle.setOnClickListener(onClickCancelListener);
+        btnCancel.setOnClickListener(onClickCancelListener);
         mImgCloseCheckAnswer.setOnClickListener(onClickCloseListener);
     }
 

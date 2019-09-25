@@ -4,37 +4,34 @@ import java.io.Serializable;
 
 public class VideoEnglish implements Serializable {
 
-    private String mTitle;
+    private final String mTitle;
 
-    private String mIdVideo;
+    private final String mIdVideo;
 
-    private String mThumbnail;
+    private final String mThumbnail;
 
-    private String mChanalTitle;
+    private final String mDescription;
 
-    private String mDescription;
-
-    public VideoEnglish(String mTitle, String mDescription, String mIdVideo, String mThumbnail, String mChanalTitle) {
+    public VideoEnglish(String mTitle, String mDescription, String mIdVideo, String mThumbnail) {
         this.mTitle = mTitle;
         this.mDescription = mDescription;
         this.mIdVideo = mIdVideo;
         this.mThumbnail = mThumbnail;
-        this.mChanalTitle = mChanalTitle;
     }
 
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
-    public String getmDescription() {
+    public String getDescription() {
         return mDescription;
     }
 
-    public String getmIdVideo() {
+    public String getIdVideo() {
         return mIdVideo;
     }
 
-    public String getmThumbnail() {
+    public String getThumbnail() {
         return mThumbnail;
     }
 }

@@ -19,7 +19,7 @@ public class LearnForVideoActivity extends YouTubeBaseActivity {
 
     private String mID = "";
 
-    private int REQUEST_VIDEO = 1000;
+    private final int REQUEST_VIDEO = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -61,20 +61,22 @@
         android:padding="@dimen/margin_padding_default">
 
 
-        <EditText
-            android:textSize="@dimen/edt_text_size"
-            android:gravity="start"
-            android:padding="@dimen/edt_padding"
-            android:id="@+id/etInputAnswer"
-            style="@style/FontBodyTextRegular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/edt_margin_top"
-            android:background="@drawable/custom_edt_input_answer"
-            android:hint="@string/editext_check_result"
-            android:inputType="text"
-            android:textColor="@color/colorBlack"
-            tools:ignore="Autofill" />
+    <EditText
+        android:background="@drawable/custom_edt_input_answer"
+        android:textSize="@dimen/edt_text_size"
+        android:gravity="start"
+        android:padding="@dimen/edt_padding"
+        android:id="@+id/etInputAnswer"
+        style="@style/FontBodyTextRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/edt_margin_top"
+        android:hint="@string/editext_check_result"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        tools:ignore="Autofill" />
+
+
     </RelativeLayout>
 
     <LinearLayout

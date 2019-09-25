@@ -31,4 +31,10 @@
     <string name="tv_name_video">Tên Video</string>
     <string name="vehicle">Xe cộ</string>
     <string name="water">Đồ uống</string>
+
+    <!-- Toast exception youtube   -->
+    <string name="check_your_internet">Làm ơn kiểm tra lại kết nối mạng của bạn !</string>
+    <string name="check_internet">Lỗi Mạng !</string>
+    <string name="exit">Thoát</string>
+
 </resources>

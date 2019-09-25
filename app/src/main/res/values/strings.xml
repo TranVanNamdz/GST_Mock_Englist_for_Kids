@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">GST_Mock_Englist_for_Kids</string>
 
     //Text Button
@@ -21,7 +21,7 @@
     <string name="title_what_is_it">Đây là cái gì ?</string>
     <string name="title_congratulation">Chúc mừng bạn đã hoàn thành !</string>
 
-    //Text topic
+    <!--   Text topic-->
     <string name="alphabet">Bảng chữ cái</string>
     <string name="number">Số đếm</string>
     <string name="animal">Động vật</string>
@@ -36,4 +36,9 @@
     <string name="school">Trường học</string>
     <string name="vehicle">Xe cộ</string>
     <string name="water">Đồ uống</string>
+
+    <!-- Toast exception youtube   -->
+    <string name="check_your_internet">Làm ơn kiểm tra lại kết nối mạng của bạn !</string>
+    <string name="check_internet">Lỗi Mạng !</string>
+    <string name="exit">Thoát</string>
 </resources>

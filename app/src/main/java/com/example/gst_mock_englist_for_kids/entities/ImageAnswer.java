@@ -12,22 +12,22 @@ public class ImageAnswer {
     private int id;
 
     @ColumnInfo(name = "image")
-    private String img;
+    private final String img;
 
     @ColumnInfo(name = "a")
-    private String a;
+    private final String a;
 
     @ColumnInfo(name = "b")
-    private String b;
+    private final String b;
 
     @ColumnInfo(name = "c")
-    private String c;
+    private final String c;
 
     @ColumnInfo(name = "d")
-    private String d;
+    private final String d;
 
     @ColumnInfo(name = "correct")
-    private String answer;
+    private final String answer;
 
     public int getId() {
         return id;

@@ -59,11 +59,11 @@ public class LookAndChooseFragment extends Fragment {
     private ImageAnswer mCurrentAnswer;
 
     @SuppressWarnings("FieldCanBeLocal")
-    private boolean mAnswered = false;
+    private final boolean mAnswered = false;
 
     private List<ImageAnswer> mList;
 
-    private View.OnClickListener mTvAClick = new View.OnClickListener() {
+    private final View.OnClickListener mTvAClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (checkAnswer(mCurrentAnswer.getAnswer(), mTvA)) {
@@ -82,7 +82,7 @@ public class LookAndChooseFragment extends Fragment {
         }
     };
 
-    private View.OnClickListener mTvBClick = new View.OnClickListener() {
+    private final View.OnClickListener mTvBClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (checkAnswer(mCurrentAnswer.getAnswer(), mTvB)) {
@@ -101,7 +101,7 @@ public class LookAndChooseFragment extends Fragment {
         }
     };
 
-    private View.OnClickListener mTvCClick = new View.OnClickListener() {
+    private final View.OnClickListener mTvCClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (checkAnswer(mCurrentAnswer.getAnswer(), mTvC)) {
@@ -120,7 +120,7 @@ public class LookAndChooseFragment extends Fragment {
         }
     };
 
-    private View.OnClickListener mTvDClick = new View.OnClickListener() {
+    private final View.OnClickListener mTvDClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (checkAnswer(mCurrentAnswer.getAnswer(), mTvD)) {
@@ -139,7 +139,7 @@ public class LookAndChooseFragment extends Fragment {
         }
     };
 
-    private View.OnClickListener mBtnHomeClick = new View.OnClickListener() {
+    private final View.OnClickListener mBtnHomeClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             final ValueAnimator value = ValueAnimator.ofFloat(1.3f, 1f);
@@ -159,7 +159,7 @@ public class LookAndChooseFragment extends Fragment {
         }
     };
 
-    private View.OnClickListener mBtnNextClick = new View.OnClickListener() {
+    private final View.OnClickListener mBtnNextClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             final ValueAnimator value = ValueAnimator.ofFloat(1.3f, 1f);

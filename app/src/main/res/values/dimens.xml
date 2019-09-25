@@ -40,10 +40,10 @@
     <dimen name="image_button_margin_bottom">20dp</dimen>
     <dimen name="img_width_answer">120dp</dimen>
     <dimen name="img_height_answer">120dp</dimen>
-    <dimen name="img_margin_top_answer">32dp</dimen>
+    <dimen name="img_margin_top_answer">40dp</dimen>
     <dimen name="img_margin_end_answer">40dp</dimen>
     <dimen name="img_margin_start_answer">40dp</dimen>
-    <dimen name="tv_margin_top">60dp</dimen>
+    <dimen name="tv_margin_top">80dp</dimen>
     <dimen name="tv_size">20sp</dimen>
     <dimen name="tv_margin_top_answer">8dp</dimen>
     <dimen name="tv_text_size">25sp</dimen>

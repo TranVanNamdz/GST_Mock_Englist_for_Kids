@@ -1,8 +1,6 @@
 package com.example.gst_mock_englist_for_kids.view.fragment;
 
 
-import android.animation.Animator;
-import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,14 +11,10 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.transition.ArcMotion;
-import android.transition.ChangeBounds;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+
 import android.widget.Button;
 
 import com.example.gst_mock_englist_for_kids.R;
@@ -78,7 +72,7 @@ public class HomeFragment extends Fragment {
     private final View.OnClickListener mBtnWatchVideoOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            changeFragment(new LearnByVideoFragment(), null, null);
+            changeFragment(new LearnByVideoFragment(), Constants.BACK_STACK_HOME_FRAGMENT, Constants.TAG_FRAGMENT_VIDEO);
         }
     };
 
@@ -116,13 +110,8 @@ public class HomeFragment extends Fragment {
         mBtnWatchVideo = view.findViewById(R.id.btnWatchVideo);
 
         mBtnLanguage = view.findViewById(R.id.btnLanguage);
-
-        actionAnimation();
     }
 
-    private void actionAnimation() {
-
-    }
 
     private void addEvents() {
         mBtnStart.setOnClickListener(mBtnStartOnClick);
@@ -149,16 +138,17 @@ public class HomeFragment extends Fragment {
     }
 
     private void showDialogLanguage() {
+        int position = -1;
         final String[] listItem = {Constants.LIST_ITEM_VN, Constants.LIST_ITEM_EN};
         final AlertDialog.Builder mbBuilder = new AlertDialog.Builder(getActivity());
         mbBuilder.setTitle(Constants.TITLE_DIALOG_LANGUAGE);
-        mbBuilder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
+
+        mbBuilder.setSingleChoiceItems(listItem, position, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
                     setLocale(Constants.LOCALE_VI);
                     Objects.requireNonNull(getActivity()).recreate();
-
                 }
                 if (which == 1) {
                     setLocale(Constants.LOCALE_EN);
